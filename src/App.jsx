@@ -30,21 +30,6 @@
  *   DATA.projects        → Portfolio project cards with images, descriptions, buttons
  *   DATA.contact         → Contact section text and buttons
  *
- * HOW TO DEPLOY TO GITHUB PAGES
- * ------------------------------
- *   1. Create a new Vite React project:   npm create vite@latest my-portfolio -- --template react
- *   2. Replace src/App.jsx content with this file
- *   3. Install gh-pages:                  npm install gh-pages --save-dev
- *   4. In package.json, add:
- *        "homepage": "https://<your-username>.github.io/<repo-name>",
- *        "scripts": { "predeploy": "npm run build", "deploy": "gh-pages -d dist" }
- *   5. In vite.config.js, set:            base: '/<repo-name>/'
- *   6. Run:                               npm run deploy
- *
- * DEPENDENCIES (already bundled in React — no extra installs needed)
- *   React 18+, no external UI libraries required.
- *   Google Fonts are loaded via a <style> tag inside the component.
- *
  * ============================================================
  */
 
@@ -59,6 +44,8 @@ import { useState, useEffect, useRef } from "react";
 //
 // Edit everything in this object to update your portfolio.
 // ============================================================
+
+const BASE = "/MyPage";
 
 const DATA = {
 
@@ -87,9 +74,9 @@ Apart from programming, I have experience as a Technical Recruiter, an English-J
 
 I also enjoy playing soccer and am part of a team in the Football 7 Society League!`,
     /** URL to your profile photo */
-    profilePicture: "https://ywayezjxjhudlfxw.public.blob.vercel-storage.com/profile_pic-SDbVrpFUsEwip3vgWUGsfTbf2CbxDe.jpg",
+    profilePicture: `${BASE}/images/profile_pic.jpg`,
     /** URL to your logo / favicon shown in the navbar */
-    logo: "https://ywayezjxjhudlfxw.public.blob.vercel-storage.com/data-scout-fm-logo-small-XzgYLjuV0wZJvQiJ9CVrKr4rTZQwnz.png",
+    logo: `${BASE}/images/logo.png`,
     /** Social media links — set to null to hide */
     social: {
       github: "https://github.com/JTee9",
@@ -197,7 +184,7 @@ projects: [
     {
       name: "Data Scout FM (React.js)",
       category: "React",
-      img: "https://ywayezjxjhudlfxw.public.blob.vercel-storage.com/Screenshot%202026-03-10%20140617-FpVplkHa5HLaDh7d8J7pYT5GTGkhP8.png",
+      img: `${BASE}/images/data-scout-fm-react-pic.png`,
       descriptionShort: "An original scouting tool for the computer game Football Manager 24, rewritten from Python to JavaScript for a highly responsive web app running entirely on the client browser.",
       descriptionLong: `[The app is live! Open this link to visit the site.](https://jtee9.github.io/data-scout-fm)
 
@@ -239,7 +226,7 @@ _There is a 'Load Sample Data' button on the app, so feel free to use that to pl
     {
       name: "Data Scout FM (Python)",
       category: "Python",
-      img: "https://ywayezjxjhudlfxw.public.blob.vercel-storage.com/Screenshot%202026-03-10%20145321-BIQcW3gjzkaA6hnqDsNQqxjAO0sDTU.png",
+      img: `${BASE}/images/data-scout-fm-py-pic.png`,
       descriptionShort: "The original version of my Data Scout FM project which I initially built in Python.",
       descriptionLong: `
 #### Introduction
@@ -278,7 +265,7 @@ My mission was to build a web application that allows Football Manager players t
     {
       name: "Data Scout JT (React, PostgreSQL)",
       category: "React",
-      img: "https://ywayezjxjhudlfxw.public.blob.vercel-storage.com/Screenshot%202026-03-10%20145148-4b1MMoEyJuZcWT1RpknPqWeipVWqpl.png",
+      img: `${BASE}/images/data-scout-jt-pic.png`,
       descriptionShort: "A web & mobile app I'm developing to gather and analyze match data from my own soccer team's matches!",
       descriptionLong: `
 #### Introduction
@@ -326,7 +313,7 @@ _The app is still a work in progress!_`,
     {
       name: "League Tables (Ruby on Rails, PostgreSQL)",
       category: "Ruby on Rails",
-      img: "https://ywayezjxjhudlfxw.public.blob.vercel-storage.com/Screenshot%202026-03-10%20140938-TIXrTYZvnkV9vsZGDQ4hpSxCxsNRTk.png",
+      img: `${BASE}/images/league-tables-pic.png`,
       descriptionShort: "A personal project to gain experience with Ruby on Rails.",
       descriptionLong: `
 #### Introduction
@@ -354,7 +341,7 @@ I wanted to try making an app with Ruby on Rails and decided to make a CRUD webs
     {
       name: "Google Colab Projects",
       category: "Python",
-      img: "https://ywayezjxjhudlfxw.public.blob.vercel-storage.com/Screenshot%202026-03-10%20141713-jf2I17qewNqQBdUbIoMVF6VpzspbOQ.png",
+      img: `${BASE}/images/google-colab-pic.png`,
       descriptionShort: "A collection of projects I've done on Google Colab.",
       descriptionLong: `
 #### Introduction
@@ -381,7 +368,7 @@ I have been using Google Colab for coding practice, research projects, and to tr
     {
       name: "2D Pixel Art RPG",
       category: "Godot",
-      img: "https://ywayezjxjhudlfxw.public.blob.vercel-storage.com/chiharunquest_title_small-TRGu3gIf3Y6gmDT1y9mZCDDDgaMXHQ.png",
+      img: `${BASE}/images/chiharunquest_title_small.png`,
       descriptionShort: "A 2D pixel art RPG I created as a practice project for Godot.",
       descriptionLong: `
 #### Introduction
