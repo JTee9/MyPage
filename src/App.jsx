@@ -127,7 +127,7 @@ I also enjoy playing soccer and am part of a team in the Football 7 Society Leag
   timeline: [
     { start: 2012, end: 2018, role: "Recruiter, IT", company: "Robert Walters Japan" },
     { start: 2018, end: 2023, role: "Recruiter, Google Cloud", company: "Google Japan" },
-    { start: 2023, end: null, role: "Software Engineer", company: "Freelance" },
+    { start: 2023, end: null, role: "Software Engineer", company: "Self Employed" },
   ],
 
   // ----------------------------------------------------------
@@ -193,37 +193,44 @@ From document translation to live interpretation, I bring both linguistic fluenc
   // descriptionLong: markdown-like text shown in the detail modal
   //   Use **bold**, blank lines for paragraphs.
   // ----------------------------------------------------------
-  projects: [
+projects: [
     {
       name: "Data Scout FM (React.js)",
       category: "React",
       img: "https://ywayezjxjhudlfxw.public.blob.vercel-storage.com/Screenshot%202026-03-10%20140617-FpVplkHa5HLaDh7d8J7pYT5GTGkhP8.png",
-      descriptionShort: "An original scouting tool for Football Manager 24, rewritten from Python to JavaScript for a highly responsive web app running entirely on the client browser.",
-      descriptionLong: `An original scouting tool for the computer game Football Manager 24, rewritten from Python to JavaScript for a highly responsive web app running entirely on the client browser.
+      descriptionShort: "An original scouting tool for the computer game Football Manager 24, rewritten from Python to JavaScript for a highly responsive web app running entirely on the client browser.",
+      descriptionLong: `[The app is live! Open this link to visit the site.](https://jtee9.github.io/data-scout-fm)
 
-**Live App**: https://jtee9.github.io/data-scout-fm
+#### Introduction
+In the world of Football Manager, there are thousands of players in leagues around the world but it can be challenging to find the future stars hidden in the large database.
 
-**Key Features**
+**Project Background**: My original Data Scout FM app was built in Python, but I ran into an issue once I added my machine learning model to the project. Having the data processing and machine learning model running in a backend server made my app way too slow. To improve user experience, I made the decision to recreate my entire app in JavaScript and have everything run on the client browser. This was a massive success and my app is now highly responsive and extremely fast!
 
+#### Key Features
 **File Upload**: Allows users to upload their game data from Football Manager. The app cleans and transforms the uploaded data into a usable format.
 
-**Stats**: Filter and chart players using match statistics (goals, assists, etc.). Most players have their attributes hidden until you scout them — this feature finds top performers worldwide to build a shortlist.
+**Stats**: Allows the user to filter and chart players from their file using the match statistics (goals, assists, etc.). This is an important feature because most players in the Football Manager game have their attributes/abilities (Pace, Finishing, Passing) hidden until you send a scout in the game to uncover them. This Stats feature allows users to find the top performing players around the world in their game to create a shortlist of players they want to send their scouts to.
 
-**Attributes**: Compare player attributes across various charts. Toggle through visuals to get a clearer picture of how two players compare.
+**Attributes**: This feature allows users to compare the attributes of players in their games across a variety of charts. It can be challenging in the game to decide which player to use or sign in a transfer because there are so many player attributes that impact their play. Figuring out which attributes impact a player's performance is one of the biggest mysteries and challenges in the game. The Attributes feature allows users to toggle through various charts to get a clearer picture of how two players compare.
 
-**AI Stats Predictor**: My personal favorite feature — uses an AI model to take a player's attributes and predict the match statistics they'll produce in any selected league.
+**AI Stats Predictor**: This is my personal favorite feature that gives users access to my AI prediction model that can take the attributes of a player and predict the match statistics (goals, assists, etc.) they will produce in any selected league from the game.
 
-**Technology Used**
+#### Project Details
+My mission was to build a web application that allows Football Manager players to experience the feeling of a professional Data Scout by using their game data to find their next transfer targets.
 
-**Danfo.js**: A data management library for Pandas-like DataFrames in JavaScript.
+#### Technology Used
+**Danfo.js**: A data management library that organizes data into Pandas-like Dataframes. I used this to manipulate the player data pulled from Football Manager into a format suitable for my data visuals and machine learning model.
 
-**React.js**: The key change from the Python version — everything moved to the client side for massive responsiveness improvements.
+**React.js**: The key change in this application from the original Python version was moving everything to the client side using JavaScript. This was challenging because there are various data transformations, computations, and other traditionally backend processes in my app, but finding the right technologies to bring them to the frontend made massive improvements to the apps responsiveness.
 
-**Key Learnings**
+#### Key Learnings
+**App Migration**: I learned the hard way why it's so important to properly plan the system architecture and design before staring to code! This was an amazing experience to learn the challenges of moving an entire app to a different language and how much of an improvement can be gained from using different technologies.
 
-**App Migration**: Learned the hard way why proper system architecture planning matters before coding.
+**React**: This was the first project I used React in and it was a the perfect example to see how the same app would be written in JavaScript vs Python.
 
-**GitHub Pages**: Moved from Render to GitHub Pages, requiring all features to run fully on the frontend.`,
+**GitHub Pages**: I moved my app from the Render hosting service to a the GitHub Pages feature on GitHub. This was a major challenge because I needed to ensure all of my interactive features would run on the frontend and that there would be absolutely no backend requirements because GitHub Pages can only post "static" websites.
+
+_There is a 'Load Sample Data' button on the app, so feel free to use that to play around with all of the cool features!_`,
       buttons: [
         { label: "Visit Site", url: "https://jtee9.github.io/data-scout-fm", isPrimary: true },
         { label: "GitHub", url: "https://github.com/JTee9/data-scout-fm", isPrimary: false },
@@ -233,94 +240,112 @@ From document translation to live interpretation, I bring both linguistic fluenc
       name: "Data Scout FM (Python)",
       category: "Python",
       img: "https://ywayezjxjhudlfxw.public.blob.vercel-storage.com/Screenshot%202026-03-10%20145321-BIQcW3gjzkaA6hnqDsNQqxjAO0sDTU.png",
-      descriptionShort: "The original version of my Data Scout FM project, initially built in Python.",
-      descriptionLong: `The original version of my Data Scout FM project which I initially built in Python.
+      descriptionShort: "The original version of my Data Scout FM project which I initially built in Python.",
+      descriptionLong: `
+#### Introduction
+My mission was to build a web application that allows Football Manager players to experience the feeling of a professional Data Scout by using their game data to find their next transfer targets.
 
-**Key Features**
+#### Key Features
+**File Upload**: Allows users to upload their game data from Football Manager. The app cleans and transforms the uploaded data into a usable format.
 
-**File Upload**: Upload and process Football Manager game data.
+**Stats**: Allows the user to filter and chart players from their file using the match statistics (goals, assists, etc.). This is an important feature because most players in the Football Manager game have their attributes/abilities (Pace, Finishing, Passing) hidden until you send a scout in the game to uncover them. This Stats feature allows users to find the top performing players around the world in their game to create a shortlist of players they want to send their scouts to.
 
-**Stats**: Filter and visualize player match statistics.
+**Attributes**: This feature allows users to compare the attributes of players in their games across a variety of charts. It can be challenging in the game to decide which player to use or sign in a transfer because there are so many player attributes that impact their play. Figuring out which attributes impact a player's performance is one of the biggest mysteries and challenges in the game. The Attributes feature allows users to toggle through various charts to get a clearer picture of how two players compare.
 
-**Attributes**: Compare player attributes with radar/spider charts.
+**AI Stats Predictor**: This is my personal favorite feature that gives users access to my AI prediction model that can take the attributes of a player and predict the match statistics (goals, assists, etc.) they will produce in any selected league from the game.
 
-**AI Stats Predictor**: TensorFlow model trained on simulated FM data to predict player statistics.
+#### Technology Used
+**Pandas**: A data management library which I used to organize the Football Manager game data into DataFrame tables. This structure allowed me to produce data charts and train machine learning models for my app.
 
-**Technology Used**
+**Plotly**: The main library I used for data visualization in my app. I used this technology to build tables, scatter plots, and radar/spider charts for player comparisons.
 
-**Pandas**: Data management and transformation into DataFrames.
+**TensorFlow**: A machine learning library I used to train my AI Stats Predictor model. I trained a model with Football Manager data I gathered by simulating many, many years in the game. The model takes the attributes of a player and their position to predict the match statistics they would produce (goals, assists, etc.) in any league selected by the user.
 
-**Plotly**: Interactive data visualization — tables, scatter plots, radar charts.
+**Dash**: A Python framework for building interactive data applications on the web. This is the framework I used to design all of the HTML/CSS web elements and move my python code to interactive visuals on the client side.
 
-**TensorFlow**: Machine learning model training for the AI Stats Predictor.
+#### Key Learnings
+**Data Engineering**: This was a great learning experience for pulling data in HTML table format, cleaning and transforming the data into a usable format, and using that formatted data to produce visuals and train ML models. One of the biggest challenges I had was making my app usable for all 12 languages available in the Football Manager game 😵‍💫
 
-**Dash**: Python framework for building interactive web applications.
+**Web App Design**: I gained a lot of experience in HTML & CSS as I built out my data dashboard frontend.
 
-**Key Learnings**
+**Machine Learning**: I gained hands-on experience training a prediction model using TensorFlow.
 
-This project was a deep dive into data engineering, ML model training, and web app design. The biggest challenge was supporting all 12 languages in Football Manager when processing data files!`,
+**Hosting Services**: I put my app on a hosted server through Render which allowed me to learn how to move my app from my local server to a public one. I was able to try various hosting services, including cloud services like GCP, and see the benefits and limitations of each one. In the end I fount that my app was too heavy to run smoothly on a free hosting server, hence the decision to rewrite my entire app to run entirely on the client browser.`,
       buttons: [
         { label: "GitHub", url: "https://github.com/JTee9/Data-Scout-FM.py", isPrimary: true },
       ],
     },
     {
-      name: "Data Scout JT (React + PostgreSQL)",
+      name: "Data Scout JT (React, PostgreSQL)",
       category: "React",
       img: "https://ywayezjxjhudlfxw.public.blob.vercel-storage.com/Screenshot%202026-03-10%20145148-4b1MMoEyJuZcWT1RpknPqWeipVWqpl.png",
       descriptionShort: "A web & mobile app I'm developing to gather and analyze match data from my own soccer team's matches!",
-      descriptionLong: `A web & mobile app for collecting and analyzing real match data from my own soccer team.
+      descriptionLong: `
+#### Introduction
+This is an app that allows users to collect data from their soccer match and analyze the data through various visuals like Pass and Shot Maps.
 
-**Features**
+#### Project Background
+Data analysis has become a standard in soccer in recent years and professional teams are using various forms of data to analyze their team and players' performance.
 
-**Pitch Mode**: A mobile-optimized data tracking tool with a soccer pitch UI and action buttons (Pass, Carry, Goal, etc.) tapped in real time during matches. Events are timestamped and saved to PostgreSQL.
+However, these software and hardware tools for data tracking and analysis are expensive and not practical for amateur teams.
 
-**Data Mode**: Desktop analysis tool — select matches and toggle through visual breakdowns of Goals, Shots, Passes, Possession, and more.
+In the amateur team that I belong to, we are looking for ways to analyze our match performance and find ways to improve our play. That's when I came up with the idea to build an app that will allow us to do what the professional clubs are doing with their data.
 
-**Goal Frame Manager**: Recreate goal sequences frame-by-frame showing player positions and ball movement, then play them back as a video on the pitch map.
+#### Features
+**Pitch Mode**: This is a highly responsive data tracking tool that can be used on a mobile device. The UI consists of a soccer pitch and action buttons (Pass, Carry, Goal, etc.) that the user can tap in real time as events occur in the match. The app can be used from the sideline by a coach during the match, or it can be used while watching a video recording of the match.
 
-**Technology Used**
+Each event is timestamped and saved into a dataset which can be uploaded to a PostgreSQL database after the match is completed. The PostgreSQL database holds and organizes the data in a similar way to a Statsbomb database (software used by professional teams) so that users can filter through specific events from each of the recorded matches.
 
-**React / React Native**: Shared codebase for web and mobile, responding to both touch and mouse events.
+**Data Mode**: This is the data analysis feature that can be used on a desktop or laptop device after data is collected in Pitch Mode. Users can select the match or matches they want to analyze and toggle through data visuals for events like Goals, Shots, Passes, Possession, etc. to see where those events happened on the pitch.
 
-**PostgreSQL**: Custom data schema inspired by Statsbomb's professional event data model.
+**Goal Frame Manager and Goal Sequence Player**: This is a unique feature I came up with to solve the problem of having data that adds real value to our team performance. Shot Maps, Pass Maps, and Heat Maps can be useful to get a sense of where our team is having success, but they don't provide enough information and context around how we score and how we get scored on.
 
-**Expo**: Cross-platform mobile development without an Apple Developer account.
+This is why I decided to create a feature where users can recreate an entire sequence leading up to the goal to show how players were positioned and how the ball was moving across the pitch. Users can create frame by frame snapshots of player positions and ball locations, and this set of frames can be played as a video on the pitch map.
 
-**Key Learnings**
+This tool allows us to see the position and movement of all players and the ball which is vital information on analyzing how we can score more goals or prevent getting scored on in future matches.
 
-First mobile app experience — learned how dramatically UX design must change between laptop and handheld interfaces. Also designed my first custom data schema from scratch.
+#### Technology Used
+**React**: This was my first mobile/web app, so I got to utilize my experience with React.js while also learning React Native to have the app respond to both screen touches and mouse clicks.
 
-*The app is still a work in progress!*`,
+**PostgreSQL**: I had some practice with databases in my studies, but this was the first time I designed my own data structures to store in the PostgreSQL tables. All of the match data I collected on my mobile is uploaded and stored in my PostgreSQL database and can be pulled to generate data analysis charts in my web app.
+
+**Expo**: I'm using a Windows laptop to build my apps, but I use an iPhone as my mobile device. Expo was the workaround I used which allowed me to access my app from my iPhone without subscribing to the Apple Developer Program.
+
+#### Key Learnings:
+**Mobile App Development**: This is my first attempt building an app to be used from a handheld device. Since I have already been using React, React Native and the touch features aren't so hard to pick up, but the bigger learning is in the UX design. It's a completely different experience using an app from a laptop vs tapping the same app on a much smaller mobile device!
+
+**Data Modeling**: My previous project had most of the data structure predetermined since they were being pulled from an external source (Football Manager game). This was the first time for me to decide every piece of data that I wanted to collect and how to organize it in a way that makes the most sense for my data analysis needs.
+
+**Soccer Event Data Tracking**: I tested my data tracking feature over and over to come up with the best UI design and database schema. There were so many match events that I wanted to track, but I had to find the right balance to make sure the user would be able to keep up with the speed of a match in real time.
+
+_The app is still a work in progress!_`,
       buttons: [
         { label: "GitHub", url: "https://github.com/JTee9/DataScoutJT", isPrimary: true },
       ],
     },
     {
-      name: "League Tables (Ruby on Rails)",
+      name: "League Tables (Ruby on Rails, PostgreSQL)",
       category: "Ruby on Rails",
       img: "https://ywayezjxjhudlfxw.public.blob.vercel-storage.com/Screenshot%202026-03-10%20140938-TIXrTYZvnkV9vsZGDQ4hpSxCxsNRTk.png",
-      descriptionShort: "A personal project to gain hands-on experience with Ruby on Rails.",
-      descriptionLong: `A Ruby on Rails web app that displays live league standings from soccer leagues around the world.
+      descriptionShort: "A personal project to gain experience with Ruby on Rails.",
+      descriptionLong: `
+#### Introduction
+This is a simple Ruby on Rails web app that allows users to view league standing tables from various soccer leagues around the world.
 
-**Features**
+#### Project Background
+I wanted to try making an app with Ruby on Rails and decided to make a CRUD website to practice the basics.
 
-**Real Data**: Connects to a Football API to pull live team and standings data.
+#### Features
+**Real Data**: The app connects to Football API and pulls real data for teams and league standings.
 
-**Authentication**: Full sign-up and log-in with username and password.
+**Authentication**: Sign-up and Log-in feature that allow users to register and log into the app with a username and password.
 
-**Favorite Team**: Logged-in users can heart a team per league. Favorites are stored in PostgreSQL and displayed publicly on the table.
+**Favorite Team**: Once a user is logged in, they can click a heart icon next to one team from each league to declare their fandom. These hearts from users are saved in the PostgreSQL database and displayed on the league table to show how many fans each team has.
 
-**Technology Used**
+#### Key Learnings
+**Ruby on Rails**: This was the first time I used Ruby and it was a great learning experience to see the similarities and differences across various programming languages and frameworks.
 
-**Ruby on Rails**: First time using Ruby — great experience comparing language paradigms across Python, JavaScript, and Ruby.
-
-**PostgreSQL**: Storing user accounts and favorite team selections.
-
-**Key Learnings**
-
-**Ruby on Rails**: Seeing how the same CRUD patterns translate across frameworks.
-
-**API Management**: First time pulling real-time data from an external third-party API.`,
+**API Management**: I had been using data collected on my own for my other projects, so I tried pulling real data from an external source this time through their API.`,
       buttons: [
         { label: "Visit Site", url: "https://league-tables-fz4g.onrender.com/", isPrimary: true },
         { label: "GitHub", url: "https://github.com/JTee9/TeamView", isPrimary: false },
@@ -330,25 +355,26 @@ First mobile app experience — learned how dramatically UX design must change b
       name: "Google Colab Projects",
       category: "Python",
       img: "https://ywayezjxjhudlfxw.public.blob.vercel-storage.com/Screenshot%202026-03-10%20141713-jf2I17qewNqQBdUbIoMVF6VpzspbOQ.png",
-      descriptionShort: "A collection of research and ML projects done on Google Colab.",
-      descriptionLong: `A collection of Python research and machine learning projects I've run on Google Colab.
+      descriptionShort: "A collection of projects I've done on Google Colab.",
+      descriptionLong: `
+#### Introduction
+I have been using Google Colab for coding practice, research projects, and to train ML models.
 
-**Projects**
+#### Project List
+**Machine Learning Model Training for Data Scout FM App**: I used Google Colab to upload and compile all of my simulated FM game data, and use that data to train my AI Stats Predictor model. I first made the model for my python project and had to add more when I needed to make the model compatible for my JavaScript version.
 
-**ML Model Training for Data Scout FM**: Compiled simulated FM game data and trained the AI Stats Predictor model used in my app — for both the Python and JavaScript versions.
+**FM Key Attributes per Position Research**: This was one of my first research projects triggered by my curiosity as I played the Football Manager game. I wanted to answer the lingering question on every Football Manager gamer's mind "Which attributes are most important for each position?". I ran a series of tests and generated various charts to show which match statistics and attributes are closely correlated (e.g. Goals (stat) and Finishing (attribute)), what attributes are common amongst top performing players in each position, and how high each attribute rating tends to be for top performers.
 
-**FM Key Attributes per Position Research**: Investigated which player attributes matter most for each position. Generated charts showing correlations between match stats and attributes, and which attributes top performers share by position.
+**FM Data Trend Research**: As I simulated through dozens of seasons in the Football Manager game to create training data for my ML model, I got the feeling that Average Ratings (one of the key player performance metrics in the game) were becoming skewed as the game moved into future seasons. I had to test my hypothesis and generate visuals on how these averages were changing over time in each of the major leagues in my game.
 
-**FM Data Trend Research**: Tested my hypothesis that Average Ratings were becoming skewed over simulated seasons, and visualized how they shifted across major leagues over time.
+**FM SHAP Chart Analysis**: This was another set of tests I ran to try out a different visual for FM data analysis. I used SHAP (SHaply Additive exPlanations) charts to visualize the correlation between stats and attributes for each position.
 
-**FM SHAP Chart Analysis**: Used SHAP (SHapley Additive exPlanations) charts to visualize feature importance for each position.
-
-**Statsbomb Practice**: Worked through Hudl Statsbomb's instructor-led course using professional match event data.`,
+**Statsbomb Practice**: Hudl Statsbomb offered an instructor-led course on data analytics using their Statsbomb data sets. It was great to get a feel of what the professional data scouts are using and to access data from real soccer matches.`,
       buttons: [
-        { label: "TensorFlow Model Training", url: "https://colab.research.google.com/drive/1qTp2iTdaLeBDgeSrwBz0ityEPR13Wwqn#scrollTo=ZUxp8Gbc78Tr", isPrimary: true },
-        { label: "Key Attributes Research", url: "https://colab.research.google.com/drive/1hvzIVNLCyGiIe6PC4wNREZSpyn7_6Jlq", isPrimary: true },
-        { label: "Data Trend Research", url: "https://colab.research.google.com/drive/1kWvLfu8Qhcf_Y35QCAMRz7_V_Wq-Xqsn", isPrimary: true },
-        { label: "SHAP Chart Analysis", url: "https://colab.research.google.com/drive/1JNuF4g_PADBBNUXf6pVTsPhbBVgl9HtQ#scrollTo=k_kZIpCO_hPr", isPrimary: true },
+        { label: "FM TensorFlow Model Training", url: "https://colab.research.google.com/drive/1qTp2iTdaLeBDgeSrwBz0ityEPR13Wwqn#scrollTo=ZUxp8Gbc78Tr", isPrimary: true },
+        { label: "FM Key Attributes per Position Research", url: "https://colab.research.google.com/drive/1hvzIVNLCyGiIe6PC4wNREZSpyn7_6Jlq", isPrimary: true },
+        { label: "FM Data Trend Research", url: "https://colab.research.google.com/drive/1kWvLfu8Qhcf_Y35QCAMRz7_V_Wq-Xqsn", isPrimary: true },
+        { label: "FM SHAP Chart Analysis", url: "https://colab.research.google.com/drive/1JNuF4g_PADBBNUXf6pVTsPhbBVgl9HtQ#scrollTo=k_kZIpCO_hPr", isPrimary: true },
         { label: "Statsbomb Practice", url: "https://colab.research.google.com/drive/1H5muOl3fLcOAdAZUgN8295gJtrJlehJW", isPrimary: true },
       ],
     },
@@ -356,18 +382,18 @@ First mobile app experience — learned how dramatically UX design must change b
       name: "2D Pixel Art RPG",
       category: "Godot",
       img: "https://ywayezjxjhudlfxw.public.blob.vercel-storage.com/chiharunquest_title_small-TRGu3gIf3Y6gmDT1y9mZCDDDgaMXHQ.png",
-      descriptionShort: "A 2D pixel art RPG I created as a birthday gift — and my first game development project.",
-      descriptionLong: `An RPG game I made as a birthday gift for my wife. The game lets her play through some of our key memories by controlling me as the player character.
+      descriptionShort: "A 2D pixel art RPG I created as a practice project for Godot.",
+      descriptionLong: `
+#### Introduction
+An RPG game I made as a birthday gift to my wife. The game allows her to play through some of our key memories by controlling me as the player.
 
-**Project Background**
+#### Project Background
+I was never good at writing birthday cards and heartfelt messages, and I've always had an interest in game development, so I decided to try expressing myself through character dialog and monologues in this simple RPG.
 
-I was never great at writing birthday cards, and I've always been curious about game development — so I decided to express myself through character dialogue and monologues in a simple RPG instead.
-
-**Technology Used**
-
-**Godot**: An open-source game development platform ideal for 2D RPGs. There was a learning curve getting comfortable with scenes and scripts, but having Python experience helped a lot since the GDScript syntax is quite similar.`,
+#### Technology Used
+**Godot**: An open source game development platform ideal for 2D RPG game creation. There definitely was a learning curve to figure out how the software worked, how to set up the scenes, and how to code the scripts, but it was helpful that I already had experience coding in Python as the syntax was quite similar.`,
       buttons: [
-        { label: "GitHub", url: "https://github.com/JTee9/ChiharunQuest", isPrimary: true },
+        { label: "Read more", url: "https://github.com/JTee9/ChiharunQuest", isPrimary: true },
       ],
     },
   ],
@@ -628,21 +654,48 @@ const DataButton = ({ btn, style = {} }) => (
 );
 
 /** Formats multi-paragraph text (split on \n\n) with basic **bold** support */
+/** Renders markdown-like text: #### headings, **bold**, _italic_, [links](url), paragraph breaks */
 const FormattedText = ({ text, style = {} }) => {
-  const paragraphs = text.split(/\n\n+/);
-  return (
-    <div style={style}>
-      {paragraphs.map((para, i) => {
-        // Simple **bold** rendering
-        const parts = para.split(/\*\*(.*?)\*\*/g);
-        return (
-          <p key={i} style={{ marginBottom: i < paragraphs.length - 1 ? "0.9em" : 0 }}>
-            {parts.map((part, j) => j % 2 === 1 ? <strong key={j}>{part}</strong> : part)}
-          </p>
-        );
-      })}
-    </div>
-  );
+  const lines = text.split("\n");
+  const elements = [];
+  let paraBuffer = [];
+
+  const flushPara = () => {
+    if (paraBuffer.length === 0) return;
+    const combined = paraBuffer.join(" ").trim();
+    if (combined) elements.push(<p key={elements.length} style={{ marginBottom: "0.85em" }}>{renderInline(combined)}</p>);
+    paraBuffer = [];
+  };
+
+  const renderInline = (str) => {
+    // Split on **bold**, _italic_, [text](url)
+    const parts = str.split(/(\*\*.*?\*\*|_.*?_|\[.*?\]\(.*?\))/g);
+    return parts.map((part, i) => {
+      if (part.startsWith("**") && part.endsWith("**")) return <strong key={i}>{part.slice(2, -2)}</strong>;
+      if (part.startsWith("_") && part.endsWith("_")) return <em key={i}>{part.slice(1, -1)}</em>;
+      const linkMatch = part.match(/^\[(.*?)\]\((.*?)\)$/);
+      if (linkMatch) return <a key={i} href={linkMatch[2]} target="_blank" rel="noreferrer" style={{ color: "var(--accent)", textDecoration: "underline" }}>{linkMatch[1]}</a>;
+      return part;
+    });
+  };
+
+  lines.forEach((line, i) => {
+    if (line.startsWith("#### ")) {
+      flushPara();
+      elements.push(
+        <h4 key={elements.length} style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "1.1rem", margin: "1.2em 0 0.4em", color: "var(--text)" }}>
+          {line.slice(5)}
+        </h4>
+      );
+    } else if (line.trim() === "") {
+      flushPara();
+    } else {
+      paraBuffer.push(line);
+    }
+  });
+  flushPara();
+
+  return <div style={style}>{elements}</div>;
 };
 
 /** Generic modal dialog — renders children inside an overlay */
