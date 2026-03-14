@@ -33,7 +33,7 @@
  * ============================================================
  */
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from 'react';
 
 // ============================================================
 // ██████   █████  ████████  █████
@@ -45,19 +45,19 @@ import { useState, useEffect, useRef } from "react";
 // Edit everything in this object to update your portfolio.
 // ============================================================
 
-const BASE = "/MyPage";
+const BASE = '/MyPage';
 
 const DATA = {
-
   // ----------------------------------------------------------
   // PERSONAL INFO
   // Shown in the Hero, About, and Footer sections.
   // ----------------------------------------------------------
   personal: {
-    firstName: "Jimmy",
-    lastName: "Talbot",
+    firstName: 'Jimmy',
+    lastName: 'Talbot',
     /** Short one-liner shown under your name in the hero */
-    tagline: "I'm a software engineer with expertise in web application development, data engineering, data visualization, and a strong passion for soccer.",
+    tagline:
+      "I'm a software engineer with expertise in web application development, data engineering, data visualization, and a strong passion for soccer.",
     /**
      * Full bio shown in the About section.
      * Supports plain text with line breaks (\n\n for new paragraphs).
@@ -79,9 +79,9 @@ I also enjoy playing soccer and am part of a team in the Football 7 Society Leag
     logo: `${BASE}/images/logo.png`,
     /** Social media links — set to null to hide */
     social: {
-      github: "https://github.com/JTee9",
-      linkedin: "https://www.linkedin.com/in/jimmy-talbot-79333058/",
-      twitter: "https://x.com/DataScoutFM",
+      github: 'https://github.com/JTee9',
+      linkedin: 'https://www.linkedin.com/in/jimmy-talbot-79333058/',
+      twitter: 'https://x.com/DataScoutFM',
     },
   },
 
@@ -92,8 +92,8 @@ I also enjoy playing soccer and am part of a team in the Football 7 Society Leag
   // Use "#contact" to scroll to the contact section.
   // ----------------------------------------------------------
   heroButtons: [
-    { label: "GitHub", url: "https://github.com/JTee9", isPrimary: true },
-    { label: "Contact", url: "#contact", isPrimary: false },
+    { label: 'GitHub', url: 'https://github.com/JTee9', isPrimary: true },
+    { label: 'Contact', url: '#contact', isPrimary: false },
   ],
 
   // ----------------------------------------------------------
@@ -101,9 +101,17 @@ I also enjoy playing soccer and am part of a team in the Football 7 Society Leag
   // Buttons shown below the bio in the About section.
   // ----------------------------------------------------------
   aboutButtons: [
-    { label: "Github", url: "https://github.com/JTee9", isPrimary: true },
-    { label: "LinkedIn", url: "https://www.linkedin.com/in/jimmy-talbot-79333058/", isPrimary: true },
-    { label: "Soccer", url: "https://football7society.jp/kanto/team/tbfc/", isPrimary: true },
+    { label: 'Github', url: 'https://github.com/JTee9', isPrimary: true },
+    {
+      label: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/jimmy-talbot-79333058/',
+      isPrimary: true,
+    },
+    {
+      label: 'Soccer',
+      url: 'https://football7society.jp/kanto/team/tbfc/',
+      isPrimary: true,
+    },
   ],
 
   // ----------------------------------------------------------
@@ -112,9 +120,24 @@ I also enjoy playing soccer and am part of a team in the Football 7 Society Leag
   // Add/remove entries as needed. "end: null" means "Present".
   // ----------------------------------------------------------
   timeline: [
-    { start: 2012, end: 2018, role: "Recruiter, IT", company: "Robert Walters Japan" },
-    { start: 2018, end: 2023, role: "Recruiter, Google Cloud", company: "Google Japan" },
-    { start: 2023, end: null, role: "Software Engineer", company: "Self Employed" },
+    {
+      start: 2012,
+      end: 2018,
+      role: 'Recruiter, IT',
+      company: 'Robert Walters Japan',
+    },
+    {
+      start: 2018,
+      end: 2023,
+      role: 'Recruiter, Google Cloud',
+      company: 'Google Japan',
+    },
+    {
+      start: 2023,
+      end: null,
+      role: 'Software Engineer',
+      company: 'Self Employed',
+    },
   ],
 
   // ----------------------------------------------------------
@@ -126,20 +149,20 @@ I also enjoy playing soccer and am part of a team in the Football 7 Society Leag
   // ----------------------------------------------------------
   services: [
     {
-      icon: "settings",
-      name: "Web & Data Engineering",
-      descriptionShort: "I can help you build web apps and custom data visualizations for your business.",
+      icon: 'settings',
+      name: 'Web & Data Engineering',
+      descriptionShort:
+        'I can help you build web apps and custom data visualizations for your business.',
       descriptionLong: `I build full-stack web applications and data pipelines tailored to your needs.
 
 Whether you need an interactive dashboard, a data processing pipeline, or a complete web application, I bring experience with React, Python, JavaScript, and modern data tooling to deliver reliable, performant solutions.`,
     },
     {
-      icon: "pen",
-      name: "Interpretation & Translation",
-      descriptionShort: "If you need someone to bridge a Japanese-English gap, I'm your guy!",
-      descriptionLong: `With years of professional experience working in Japan and bilingual communication, I can help bridge language gaps in technical and business contexts.
-
-From document translation to live interpretation, I bring both linguistic fluency and technical vocabulary to ensure nothing is lost in translation.`,
+      icon: 'pen',
+      name: 'Interpretation & Translation',
+      descriptionShort:
+        "If you need someone to bridge a Japanese-English gap, I'm your guy!",
+      descriptionLong: `With years of professional experience working in Japan and bilingual communication, I can help bridge language gaps in any context. My current expertise and passion is language interpretation in sports.`,
     },
   ],
 
@@ -150,25 +173,37 @@ From document translation to live interpretation, I bring both linguistic fluenc
   // group: used to color-code tags by category
   // ----------------------------------------------------------
   skills: [
-    // Programming
-    { name: "Python",         group: "Programming",        value: 90 },
-    { name: "JavaScript",     group: "Programming",        value: 100 },
-    { name: "React",          group: "Programming",        value: 90 },
-    { name: "Ruby on Rails",  group: "Programming",        value: 50 },
-    { name: "Godot",          group: "Programming",        value: 50 },
-    // Data Engineering
-    { name: "Pandas",         group: "Data Engineering",   value: 90 },
-    { name: "Data Cleaning",  group: "Data Engineering",   value: 91 },
-    { name: "ETL Pipelines",  group: "Data Engineering",   value: 90 },
-    { name: "Machine Learning", group: "Data Engineering", value: 50 },
-    { name: "PostgreSQL",     group: "Data Engineering",   value: 50 },
-    // Data Visualization
-    { name: "Matplotlib",     group: "Data Visualization", value: 90 },
-    { name: "Plotly",         group: "Data Visualization", value: 80 },
-    { name: "Dash",           group: "Data Visualization", value: 80 },
-    // Tools
-    { name: "Google Colab",   group: "Tools",              value: 80 },
-    { name: "TensorFlow",     group: "Tools",              value: 60 },
+    // Programming & Scripting
+    { name: 'Python', group: 'Programming & Scripting', value: 90 },
+    { name: 'JavaScript', group: 'Programming & Scripting', value: 100 },
+    { name: 'TypeScript', group: 'Programming & Scripting', value: 100 },
+    { name: 'SQL', group: 'Programming & Scripting', value: 90 },
+    // Frameworks & Engines
+    { name: 'React', group: 'Frameworks & Engines', value: 90 },
+    { name: 'Dash', group: 'Frameworks & Engines', value: 90 },
+    { name: 'Flask', group: 'Frameworks & Engines', value: 90 },
+    { name: 'Ruby on Rails', group: 'Frameworks & Engines', value: 50 },
+    { name: 'Godot', group: 'Frameworks & Engines', value: 50 },
+    // Data Engineering & Databases
+    { name: 'Data Modeling', group: 'Data Engineering & Databases', value: 90 },
+    { name: 'Data Cleaning', group: 'Data Engineering & Databases', value: 90 },
+    { name: 'ETL Pipelines', group: 'Data Engineering & Databases', value: 90 },
+    { name: 'PostgreSQL', group: 'Data Engineering & Databases', value: 50 },
+    // Data Science & Machine Learning
+    { name: 'Pandas', group: 'Data Science & Machine Learning', value: 90 },
+    { name: 'TensorFlow', group: 'Data Science & Machine Learning', value: 50 },
+    {
+      name: 'scikit-learn',
+      group: 'Data Science & Machine Learning',
+      value: 50,
+    },
+    { name: 'Matplotlib', group: 'Data Science & Machine Learning', value: 90 },
+    { name: 'Plotly', group: 'Data Science & Machine Learning', value: 80 },
+    // Tools & Environments
+    { name: 'Google Colab', group: 'Tools & Environments', value: 80 },
+    { name: 'Git', group: 'Tools & Environments', value: 80 },
+    { name: 'Render', group: 'Tools & Environments', value: 80 },
+    { name: 'GitHub Pages', group: 'Tools & Environments', value: 80 },
   ],
 
   // ----------------------------------------------------------
@@ -180,12 +215,13 @@ From document translation to live interpretation, I bring both linguistic fluenc
   // descriptionLong: markdown-like text shown in the detail modal
   //   Use **bold**, blank lines for paragraphs.
   // ----------------------------------------------------------
-projects: [
+  projects: [
     {
-      name: "Data Scout FM (React.js)",
-      category: "React",
+      name: 'Data Scout FM (React.js)',
+      category: 'React',
       img: `${BASE}/images/data-scout-fm-react-pic.png`,
-      descriptionShort: "An original scouting tool for the computer game Football Manager 24, rewritten from Python to JavaScript for a highly responsive web app running entirely on the client browser.",
+      descriptionShort:
+        'An original scouting tool for the computer game Football Manager 24, rewritten from Python to JavaScript for a highly responsive web app running entirely on the client browser.',
       descriptionLong: `[The app is live! Open this link to visit the site.](https://jtee9.github.io/data-scout-fm)
 
 #### Introduction
@@ -219,15 +255,24 @@ My mission was to build a web application that allows Football Manager players t
 
 _There is a 'Load Sample Data' button on the app, so feel free to use that to play around with all of the cool features!_`,
       buttons: [
-        { label: "Visit Site", url: "https://jtee9.github.io/data-scout-fm", isPrimary: true },
-        { label: "GitHub", url: "https://github.com/JTee9/data-scout-fm", isPrimary: false },
+        {
+          label: 'Visit Site',
+          url: 'https://jtee9.github.io/data-scout-fm',
+          isPrimary: true,
+        },
+        {
+          label: 'GitHub',
+          url: 'https://github.com/JTee9/data-scout-fm',
+          isPrimary: false,
+        },
       ],
     },
     {
-      name: "Data Scout FM (Python)",
-      category: "Python",
+      name: 'Data Scout FM (Python)',
+      category: 'Python',
       img: `${BASE}/images/data-scout-fm-py-pic.png`,
-      descriptionShort: "The original version of my Data Scout FM project which I initially built in Python.",
+      descriptionShort:
+        'The original version of my Data Scout FM project which I initially built in Python.',
       descriptionLong: `
 #### Introduction
 My mission was to build a web application that allows Football Manager players to experience the feeling of a professional Data Scout by using their game data to find their next transfer targets.
@@ -259,14 +304,19 @@ My mission was to build a web application that allows Football Manager players t
 
 **Hosting Services**: I put my app on a hosted server through Render which allowed me to learn how to move my app from my local server to a public one. I was able to try various hosting services, including cloud services like GCP, and see the benefits and limitations of each one. In the end I fount that my app was too heavy to run smoothly on a free hosting server, hence the decision to rewrite my entire app to run entirely on the client browser.`,
       buttons: [
-        { label: "GitHub", url: "https://github.com/JTee9/Data-Scout-FM.py", isPrimary: true },
+        {
+          label: 'GitHub',
+          url: 'https://github.com/JTee9/Data-Scout-FM.py',
+          isPrimary: true,
+        },
       ],
     },
     {
-      name: "Data Scout JT (React, PostgreSQL)",
-      category: "React",
+      name: 'Data Scout JT (React, PostgreSQL)',
+      category: 'React',
       img: `${BASE}/images/data-scout-jt-pic.png`,
-      descriptionShort: "A web & mobile app I'm developing to gather and analyze match data from my own soccer team's matches!",
+      descriptionShort:
+        "A web & mobile app I'm developing to gather and analyze match data from my own soccer team's matches!",
       descriptionLong: `
 #### Introduction
 This is an app that allows users to collect data from their soccer match and analyze the data through various visuals like Pass and Shot Maps.
@@ -307,14 +357,19 @@ This tool allows us to see the position and movement of all players and the ball
 
 _The app is still a work in progress!_`,
       buttons: [
-        { label: "GitHub", url: "https://github.com/JTee9/DataScoutJT", isPrimary: true },
+        {
+          label: 'GitHub',
+          url: 'https://github.com/JTee9/DataScoutJT',
+          isPrimary: true,
+        },
       ],
     },
     {
-      name: "League Tables (Ruby on Rails, PostgreSQL)",
-      category: "Ruby on Rails",
+      name: 'League Tables (Ruby on Rails, PostgreSQL)',
+      category: 'Ruby on Rails',
       img: `${BASE}/images/league-tables-pic.png`,
-      descriptionShort: "A personal project to gain experience with Ruby on Rails.",
+      descriptionShort:
+        'A personal project to gain experience with Ruby on Rails.',
       descriptionLong: `
 #### Introduction
 This is a simple Ruby on Rails web app that allows users to view league standing tables from various soccer leagues around the world.
@@ -334,13 +389,21 @@ I wanted to try making an app with Ruby on Rails and decided to make a CRUD webs
 
 **API Management**: I had been using data collected on my own for my other projects, so I tried pulling real data from an external source this time through their API.`,
       buttons: [
-        { label: "Visit Site", url: "https://league-tables-fz4g.onrender.com/", isPrimary: true },
-        { label: "GitHub", url: "https://github.com/JTee9/TeamView", isPrimary: false },
+        {
+          label: 'Visit Site',
+          url: 'https://league-tables-fz4g.onrender.com/',
+          isPrimary: true,
+        },
+        {
+          label: 'GitHub',
+          url: 'https://github.com/JTee9/TeamView',
+          isPrimary: false,
+        },
       ],
     },
     {
-      name: "Google Colab Projects",
-      category: "Python",
+      name: 'Google Colab Projects',
+      category: 'Python',
       img: `${BASE}/images/google-colab-pic.png`,
       descriptionShort: "A collection of projects I've done on Google Colab.",
       descriptionLong: `
@@ -358,18 +421,39 @@ I have been using Google Colab for coding practice, research projects, and to tr
 
 **Statsbomb Practice**: Hudl Statsbomb offered an instructor-led course on data analytics using their Statsbomb data sets. It was great to get a feel of what the professional data scouts are using and to access data from real soccer matches.`,
       buttons: [
-        { label: "FM TensorFlow Model Training", url: "https://colab.research.google.com/drive/1qTp2iTdaLeBDgeSrwBz0ityEPR13Wwqn#scrollTo=ZUxp8Gbc78Tr", isPrimary: true },
-        { label: "FM Key Attributes per Position Research", url: "https://colab.research.google.com/drive/1hvzIVNLCyGiIe6PC4wNREZSpyn7_6Jlq", isPrimary: true },
-        { label: "FM Data Trend Research", url: "https://colab.research.google.com/drive/1kWvLfu8Qhcf_Y35QCAMRz7_V_Wq-Xqsn", isPrimary: true },
-        { label: "FM SHAP Chart Analysis", url: "https://colab.research.google.com/drive/1JNuF4g_PADBBNUXf6pVTsPhbBVgl9HtQ#scrollTo=k_kZIpCO_hPr", isPrimary: true },
-        { label: "Statsbomb Practice", url: "https://colab.research.google.com/drive/1H5muOl3fLcOAdAZUgN8295gJtrJlehJW", isPrimary: true },
+        {
+          label: 'FM TensorFlow Model Training',
+          url: 'https://colab.research.google.com/drive/1qTp2iTdaLeBDgeSrwBz0ityEPR13Wwqn#scrollTo=ZUxp8Gbc78Tr',
+          isPrimary: true,
+        },
+        {
+          label: 'FM Key Attributes per Position Research',
+          url: 'https://colab.research.google.com/drive/1hvzIVNLCyGiIe6PC4wNREZSpyn7_6Jlq',
+          isPrimary: true,
+        },
+        {
+          label: 'FM Data Trend Research',
+          url: 'https://colab.research.google.com/drive/1kWvLfu8Qhcf_Y35QCAMRz7_V_Wq-Xqsn',
+          isPrimary: true,
+        },
+        {
+          label: 'FM SHAP Chart Analysis',
+          url: 'https://colab.research.google.com/drive/1JNuF4g_PADBBNUXf6pVTsPhbBVgl9HtQ#scrollTo=k_kZIpCO_hPr',
+          isPrimary: true,
+        },
+        {
+          label: 'Statsbomb Practice',
+          url: 'https://colab.research.google.com/drive/1H5muOl3fLcOAdAZUgN8295gJtrJlehJW',
+          isPrimary: true,
+        },
       ],
     },
     {
-      name: "2D Pixel Art RPG",
-      category: "Godot",
+      name: '2D Pixel Art RPG',
+      category: 'Godot',
       img: `${BASE}/images/chiharunquest_title_small.png`,
-      descriptionShort: "A 2D pixel art RPG I created as a practice project for Godot.",
+      descriptionShort:
+        'A 2D pixel art RPG I created as a practice project for Godot.',
       descriptionLong: `
 #### Introduction
 An RPG game I made as a birthday gift to my wife. The game allows her to play through some of our key memories by controlling me as the player.
@@ -378,9 +462,13 @@ An RPG game I made as a birthday gift to my wife. The game allows her to play th
 I was never good at writing birthday cards and heartfelt messages, and I've always had an interest in game development, so I decided to try expressing myself through character dialog and monologues in this simple RPG.
 
 #### Technology Used
-**Godot**: An open source game development platform ideal for 2D RPG game creation. There definitely was a learning curve to figure out how the software worked, how to set up the scenes, and how to code the scripts, but it was helpful that I already had experience coding in Python as the syntax was quite similar.`,
+**Godot**: An open source game development platform ideal for 2D RPG game creation. There definitely was a learning curve to figure out how the software worked, how to set up the scenes, and how to code the scripts, but it was helpful that I already had experience coding in Python as the GDscript syntax was quite similar.`,
       buttons: [
-        { label: "Read more", url: "https://github.com/JTee9/ChiharunQuest", isPrimary: true },
+        {
+          label: 'Read more',
+          url: 'https://github.com/JTee9/ChiharunQuest',
+          isPrimary: true,
+        },
       ],
     },
   ],
@@ -391,10 +479,14 @@ I was never good at writing birthday cards and heartfelt messages, and I've alwa
   // Use "mailto:..." for email, or a full URL for others.
   // ----------------------------------------------------------
   contact: {
-    text: "Feel free to contact me for any inquiry.\n\nI'm looking forward to working with you!",
+    text: 'Feel free to contact me for any inquiry or if you just want to connect!',
     buttons: [
-      { label: "Email", url: "mailto:jimmytalbot9@gmail.com", isPrimary: true },
-      { label: "LinkedIn", url: "https://www.linkedin.com/in/jimmy-talbot-79333058/", isPrimary: true },
+      { label: 'Email', url: 'mailto:jimmytalbot9@gmail.com', isPrimary: true },
+      {
+        label: 'LinkedIn',
+        url: 'https://www.linkedin.com/in/jimmy-talbot-79333058/',
+        isPrimary: true,
+      },
     ],
   },
 };
@@ -407,22 +499,22 @@ const THEME = `
   @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
 
   :root {
-    --bg:           #0d0f14;
-    --bg-card:      #13161d;
-    --bg-card-hover:#181c25;
-    --border:       rgba(255,255,255,0.07);
-    --accent:       #5b9cf6;
-    --accent-dim:   rgba(91,156,246,0.15);
-    --accent-glow:  rgba(91,156,246,0.35);
-    --text:         #e8ecf4;
-    --text-muted:   #6b7280;
-    --text-soft:    #9ca3af;
-    --font-display: 'DM Serif Display', Georgia, serif;
-    --font-body:    'DM Sans', sans-serif;
-    --radius:       10px;
-    --max-w:        900px;
-    --transition:   0.22s ease;
-  }
+  --bg:           #f8f7f4;
+  --bg-card:      #ffffff;
+  --bg-card-hover:#f1efeb;
+  --border:       rgba(0,0,0,0.08);
+  --accent:       #3b6fd4;
+  --accent-dim:   rgba(59,111,212,0.1);
+  --accent-glow:  rgba(59,111,212,0.2);
+  --text:         #1a1a2e;
+  --text-muted:   #9ca3af;
+  --text-soft:    #4b5563;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body:    'DM Sans', sans-serif;
+  --radius:       10px;
+  --max-w:        900px;
+  --transition:   0.22s ease;
+}
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -442,7 +534,7 @@ const THEME = `
   img { display: block; }
 
   /* ── Scrollbar ── */
-  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar { width: 15px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
 
@@ -471,7 +563,7 @@ const THEME = `
   }
   .btn-primary {
     background: var(--accent);
-    color: #0d0f14;
+    color: #ffffff;
     border-color: var(--accent);
   }
   .btn-primary:hover { background: #7ab0f8; border-color: #7ab0f8; transform: translateY(-1px); }
@@ -545,42 +637,102 @@ const THEME = `
 /** Simple SVG icons used throughout */
 const Icon = ({ name, size = 22 }) => {
   const icons = {
-    github: <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />,
-    linkedin: <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />,
-    twitter: <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />,
+    github: (
+      <path d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12' />
+    ),
+    linkedin: (
+      <path d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' />
+    ),
+    twitter: (
+      <path d='M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z' />
+    ),
     settings: null, // rendered inline below
     pen: null,
     x: null,
     menu: null,
     chevron: null,
   };
-  if (name === "settings") return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" /><circle cx="12" cy="12" r="3" />
-    </svg>
-  );
-  if (name === "pen") return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-    </svg>
-  );
-  if (name === "x") return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 6 6 18" /><path d="m6 6 12 12" />
-    </svg>
-  );
-  if (name === "menu") return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 12h18" /><path d="M3 18h18" /><path d="M3 6h18" />
-    </svg>
-  );
-  if (name === "chevron") return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="m6 9 6 6 6-6" />
-    </svg>
-  );
+  if (name === 'settings')
+    return (
+      <svg
+        width={size}
+        height={size}
+        viewBox='0 0 24 24'
+        fill='none'
+        stroke='currentColor'
+        strokeWidth='2'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      >
+        <path d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z' />
+        <circle cx='12' cy='12' r='3' />
+      </svg>
+    );
+  if (name === 'pen')
+    return (
+      <svg
+        width={size}
+        height={size}
+        viewBox='0 0 24 24'
+        fill='none'
+        stroke='currentColor'
+        strokeWidth='2'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      >
+        <path d='M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z' />
+      </svg>
+    );
+  if (name === 'x')
+    return (
+      <svg
+        width={size}
+        height={size}
+        viewBox='0 0 24 24'
+        fill='none'
+        stroke='currentColor'
+        strokeWidth='2'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      >
+        <path d='M18 6 6 18' />
+        <path d='m6 6 12 12' />
+      </svg>
+    );
+  if (name === 'menu')
+    return (
+      <svg
+        width={size}
+        height={size}
+        viewBox='0 0 24 24'
+        fill='none'
+        stroke='currentColor'
+        strokeWidth='2'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      >
+        <path d='M3 12h18' />
+        <path d='M3 18h18' />
+        <path d='M3 6h18' />
+      </svg>
+    );
+  if (name === 'chevron')
+    return (
+      <svg
+        width={size}
+        height={size}
+        viewBox='0 0 24 24'
+        fill='none'
+        stroke='currentColor'
+        strokeWidth='2'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      >
+        <path d='m6 9 6 6 6-6' />
+      </svg>
+    );
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <svg width={size} height={size} viewBox='0 0 24 24' fill='currentColor'>
       {icons[name]}
     </svg>
   );
@@ -588,29 +740,56 @@ const Icon = ({ name, size = 22 }) => {
 
 /** Social icon links row */
 const SocialLinks = ({ style = {} }) => (
-  <div style={{ display: "flex", gap: "14px", alignItems: "center", ...style }}>
+  <div style={{ display: 'flex', gap: '14px', alignItems: 'center', ...style }}>
     {DATA.personal.social.twitter && (
-      <a href={DATA.personal.social.twitter} target="_blank" rel="noreferrer"
-        style={{ color: "var(--text-muted)", transition: "color var(--transition)" }}
-        onMouseEnter={e => e.currentTarget.style.color = "var(--text)"}
-        onMouseLeave={e => e.currentTarget.style.color = "var(--text-muted)"}>
-        <Icon name="twitter" size={20} />
+      <a
+        href={DATA.personal.social.twitter}
+        target='_blank'
+        rel='noreferrer'
+        style={{
+          color: 'var(--text-muted)',
+          transition: 'color var(--transition)',
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text)')}
+        onMouseLeave={(e) =>
+          (e.currentTarget.style.color = 'var(--text-muted)')
+        }
+      >
+        <Icon name='twitter' size={20} />
       </a>
     )}
     {DATA.personal.social.github && (
-      <a href={DATA.personal.social.github} target="_blank" rel="noreferrer"
-        style={{ color: "var(--text-muted)", transition: "color var(--transition)" }}
-        onMouseEnter={e => e.currentTarget.style.color = "var(--text)"}
-        onMouseLeave={e => e.currentTarget.style.color = "var(--text-muted)"}>
-        <Icon name="github" size={20} />
+      <a
+        href={DATA.personal.social.github}
+        target='_blank'
+        rel='noreferrer'
+        style={{
+          color: 'var(--text-muted)',
+          transition: 'color var(--transition)',
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text)')}
+        onMouseLeave={(e) =>
+          (e.currentTarget.style.color = 'var(--text-muted)')
+        }
+      >
+        <Icon name='github' size={20} />
       </a>
     )}
     {DATA.personal.social.linkedin && (
-      <a href={DATA.personal.social.linkedin} target="_blank" rel="noreferrer"
-        style={{ color: "var(--text-muted)", transition: "color var(--transition)" }}
-        onMouseEnter={e => e.currentTarget.style.color = "var(--text)"}
-        onMouseLeave={e => e.currentTarget.style.color = "var(--text-muted)"}>
-        <Icon name="linkedin" size={20} />
+      <a
+        href={DATA.personal.social.linkedin}
+        target='_blank'
+        rel='noreferrer'
+        style={{
+          color: 'var(--text-muted)',
+          transition: 'color var(--transition)',
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text)')}
+        onMouseLeave={(e) =>
+          (e.currentTarget.style.color = 'var(--text-muted)')
+        }
+      >
+        <Icon name='linkedin' size={20} />
       </a>
     )}
   </div>
@@ -618,23 +797,79 @@ const SocialLinks = ({ style = {} }) => (
 
 /** Scrolls to a section by id, or follows external link */
 const handleNav = (url) => {
-  if (url.startsWith("#")) {
+  if (url.startsWith('#')) {
     const el = document.querySelector(url);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   } else {
-    window.open(url, "_blank", "noreferrer");
+    window.open(url, '_blank', 'noreferrer');
   }
 };
+
+/**
+ * ScrollHint
+ * A bobbing chevron arrow that scrolls to the target section on click.
+ *
+ * Props:
+ *   target (string) — the id of the section to scroll to e.g. "#about"
+ *   absolute (bool) — if true, positions itself at the bottom of a
+ *                     relative-positioned parent (e.g. the Hero section).
+ *                     if false, renders inline centered below section content.
+ */
+const ScrollHint = ({ target, absolute = false }) => (
+  <>
+    <div
+      onClick={() => handleNav(target)}
+      style={{
+        ...(absolute
+          ? {
+              position: 'absolute',
+              bottom: 28,
+              left: '50%',
+              transform: 'translateX(-50%)',
+            }
+          : {
+              display: 'flex',
+              justifyContent: 'center',
+              paddingBottom: 16,
+              marginTop: -24,
+            }),
+        color: 'var(--text-muted)',
+        cursor: 'pointer',
+        animation: 'bob 2s ease-in-out infinite',
+        zIndex: 1,
+      }}
+    >
+      <Icon name='chevron' size={28} />
+    </div>
+    <style>{`
+      @keyframes bob {
+        0%, 100% { transform: ${absolute ? 'translateX(-50%) translateY(0)' : 'translateY(0)'}; }
+        50%       { transform: ${absolute ? 'translateX(-50%) translateY(6px)' : 'translateY(6px)'}; }
+      }
+    `}</style>
+  </>
+);
 
 /** Renders a button from the data shape { label, url, isPrimary } */
 const DataButton = ({ btn, style = {} }) => (
   <a
     href={btn.url}
-    target={btn.url.startsWith("#") || btn.url.startsWith("mailto") ? "_self" : "_blank"}
-    rel="noreferrer"
-    className={`btn ${btn.isPrimary ? "btn-primary" : "btn-outline"}`}
+    target={
+      btn.url.startsWith('#') || btn.url.startsWith('mailto')
+        ? '_self'
+        : '_blank'
+    }
+    rel='noreferrer'
+    className={`btn ${btn.isPrimary ? 'btn-primary' : 'btn-outline'}`}
     style={style}
-    onClick={btn.url.startsWith("#") ? (e) => { e.preventDefault(); handleNav(btn.url); } : undefined}
+    onClick={
+      btn.url.startsWith('#')
+        ? (e) => {
+            e.preventDefault();
+            handleNav(btn.url);
+          }
+        : undefined
+    }
   >
     {btn.label}
   </a>
@@ -643,38 +878,91 @@ const DataButton = ({ btn, style = {} }) => (
 /** Formats multi-paragraph text (split on \n\n) with basic **bold** support */
 /** Renders markdown-like text: #### headings, **bold**, _italic_, [links](url), paragraph breaks */
 const FormattedText = ({ text, style = {} }) => {
-  const lines = text.split("\n");
+  const lines = text.split('\n');
   const elements = [];
   let paraBuffer = [];
 
   const flushPara = () => {
     if (paraBuffer.length === 0) return;
-    const combined = paraBuffer.join(" ").trim();
-    if (combined) elements.push(<p key={elements.length} style={{ marginBottom: "0.85em" }}>{renderInline(combined)}</p>);
+    const combined = paraBuffer.join(' ').trim();
+    if (combined)
+      elements.push(
+        <p
+          key={elements.length}
+          style={{
+            marginBottom: '0.85em',
+            color: 'var(--text-soft)',
+            fontWeight: 400 /* bumped from 300 — much easier to read */,
+            fontSize: '0.95rem' /* slightly larger */,
+            lineHeight: 1.75,
+          }}
+        >
+          {renderInline(combined)}
+        </p>,
+      );
     paraBuffer = [];
   };
 
   const renderInline = (str) => {
-    // Split on **bold**, _italic_, [text](url)
     const parts = str.split(/(\*\*.*?\*\*|_.*?_|\[.*?\]\(.*?\))/g);
     return parts.map((part, i) => {
-      if (part.startsWith("**") && part.endsWith("**")) return <strong key={i}>{part.slice(2, -2)}</strong>;
-      if (part.startsWith("_") && part.endsWith("_")) return <em key={i}>{part.slice(1, -1)}</em>;
+      if (part.startsWith('**') && part.endsWith('**'))
+        return (
+          <strong
+            key={i}
+            style={{
+              color: 'var(--text)' /* full contrast for bold labels */,
+              fontWeight: 600,
+            }}
+          >
+            {part.slice(2, -2)}
+          </strong>
+        );
+      if (part.startsWith('_') && part.endsWith('_'))
+        return (
+          <em key={i} style={{ color: 'var(--text-muted)' }}>
+            {part.slice(1, -1)}
+          </em>
+        );
       const linkMatch = part.match(/^\[(.*?)\]\((.*?)\)$/);
-      if (linkMatch) return <a key={i} href={linkMatch[2]} target="_blank" rel="noreferrer" style={{ color: "var(--accent)", textDecoration: "underline" }}>{linkMatch[1]}</a>;
+      if (linkMatch)
+        return (
+          <a
+            key={i}
+            href={linkMatch[2]}
+            target='_blank'
+            rel='noreferrer'
+            style={{ color: 'var(--accent)', textDecoration: 'underline' }}
+          >
+            {linkMatch[1]}
+          </a>
+        );
       return part;
     });
   };
 
-  lines.forEach((line, i) => {
-    if (line.startsWith("#### ")) {
+  lines.forEach((line) => {
+    if (line.startsWith('#### ')) {
       flushPara();
       elements.push(
-        <h4 key={elements.length} style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "1.1rem", margin: "1.2em 0 0.4em", color: "var(--text)" }}>
+        <h4
+          key={elements.length}
+          style={{
+            fontFamily: 'var(--font-display)',
+            fontWeight: 400,
+            fontSize: '1.15rem' /* bigger and bolder section titles */,
+            margin: '1.4em 0 0.5em',
+            color: 'var(--text)' /* full contrast */,
+            letterSpacing: '-0.01em',
+            borderBottom:
+              '1px solid var(--border)' /* subtle divider under each heading */,
+            paddingBottom: '0.3em',
+          }}
+        >
           {line.slice(5)}
-        </h4>
+        </h4>,
       );
-    } else if (line.trim() === "") {
+    } else if (line.trim() === '') {
       flushPara();
     } else {
       paraBuffer.push(line);
@@ -682,26 +970,37 @@ const FormattedText = ({ text, style = {} }) => {
   });
   flushPara();
 
-  return <div style={style}>{elements}</div>;
+  return <div style={{ ...style, fontWeight: 400 }}>{elements}</div>;
 };
 
 /** Generic modal dialog — renders children inside an overlay */
 const Modal = ({ onClose, children }) => {
   useEffect(() => {
-    const handler = (e) => { if (e.key === "Escape") onClose(); };
-    document.addEventListener("keydown", handler);
-    document.body.style.overflow = "hidden";
+    const handler = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handler);
+    document.body.style.overflow = 'hidden';
     return () => {
-      document.removeEventListener("keydown", handler);
-      document.body.style.overflow = "";
+      document.removeEventListener('keydown', handler);
+      document.body.style.overflow = '';
     };
   }, [onClose]);
 
   return (
-    <div className="modal-overlay" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div className="modal-box">
-        <button className="modal-close" onClick={onClose} aria-label="Close modal">
-          <Icon name="x" size={20} />
+    <div
+      className='modal-overlay'
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div className='modal-box'>
+        <button
+          className='modal-close'
+          onClick={onClose}
+          aria-label='Close modal'
+        >
+          <Icon name='x' size={20} />
         </button>
         {children}
       </div>
@@ -719,85 +1018,153 @@ const Navbar = () => {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const navLinks = [
-    { label: "Services", href: "#services" },
-    { label: "Portfolio", href: "#portfolio" },
-    { label: "Skills", href: "#skills" },
+    { label: 'Services', href: '#services' },
+    { label: 'Portfolio', href: '#portfolio' },
+    { label: 'Skills', href: '#skills' },
   ];
 
   const navStyle = {
-    position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-    transition: "background var(--transition), border-color var(--transition)",
-    background: scrolled ? "rgba(13,15,20,0.92)" : "transparent",
-    borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
-    backdropFilter: scrolled ? "blur(12px)" : "none",
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 100,
+    transition: 'background var(--transition), border-color var(--transition)',
+    background: scrolled ? 'rgba(248,247,244,0.92)' : 'transparent',
+    borderBottom: scrolled
+      ? '1px solid var(--border)'
+      : '1px solid transparent',
+    backdropFilter: scrolled ? 'blur(12px)' : 'none',
   };
 
   return (
     <nav style={navStyle}>
-      <div className="wrapper" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
+      <div
+        className='wrapper'
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          height: 64,
+        }}
+      >
         {/* Logo */}
-        <a href="#hero" onClick={(e) => { e.preventDefault(); handleNav("#hero"); }}>
-          <img src={DATA.personal.logo} alt="Logo" style={{ width: 32, height: 32, objectFit: "contain" }} />
+        <a
+          href='#hero'
+          onClick={(e) => {
+            e.preventDefault();
+            handleNav('#hero');
+          }}
+        >
+          <img
+            src={DATA.personal.logo}
+            alt='Logo'
+            style={{ width: 32, height: 32, objectFit: 'contain' }}
+          />
         </a>
 
         {/* Desktop nav */}
-        <div style={{ display: "flex", alignItems: "center", gap: 4 }} className="desktop-nav">
-          {navLinks.map(link => (
-            <button key={link.href}
+        <div
+          style={{ display: 'flex', alignItems: 'center', gap: 4 }}
+          className='desktop-nav'
+        >
+          {navLinks.map((link) => (
+            <button
+              key={link.href}
               onClick={() => handleNav(link.href)}
               style={{
-                background: "none", border: "none", color: "var(--text-soft)",
-                fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 400,
-                padding: "8px 14px", cursor: "pointer", borderRadius: "var(--radius)",
-                transition: "color var(--transition)",
+                background: 'none',
+                border: 'none',
+                color: 'var(--text-soft)',
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.875rem',
+                fontWeight: 400,
+                padding: '8px 14px',
+                cursor: 'pointer',
+                borderRadius: 'var(--radius)',
+                transition: 'color var(--transition)',
               }}
-              onMouseEnter={e => e.currentTarget.style.color = "var(--text)"}
-              onMouseLeave={e => e.currentTarget.style.color = "var(--text-soft)"}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color = 'var(--text)')
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = 'var(--text-soft)')
+              }
             >
               {link.label}
             </button>
           ))}
-          <button className="btn btn-primary" style={{ marginLeft: 8 }} onClick={() => handleNav("#contact")}>
+          <button
+            className='btn btn-primary'
+            style={{ marginLeft: 8 }}
+            onClick={() => handleNav('#contact')}
+          >
             Contact
           </button>
         </div>
 
         {/* Mobile hamburger */}
         <button
-          onClick={() => setMobileOpen(v => !v)}
-          style={{ background: "none", border: "none", color: "var(--text)", cursor: "pointer", display: "none" }}
-          className="mobile-menu-btn"
-          aria-label="Toggle menu"
+          onClick={() => setMobileOpen((v) => !v)}
+          style={{
+            background: 'none',
+            border: 'none',
+            color: 'var(--text)',
+            cursor: 'pointer',
+            display: 'none',
+          }}
+          className='mobile-menu-btn'
+          aria-label='Toggle menu'
         >
-          <Icon name="menu" size={24} />
+          <Icon name='menu' size={24} />
         </button>
       </div>
 
       {/* Mobile dropdown */}
       {mobileOpen && (
-        <div style={{
-          background: "rgba(13,15,20,0.97)", borderBottom: "1px solid var(--border)",
-          padding: "12px 24px 20px",
-        }}>
-          {navLinks.map(link => (
-            <button key={link.href}
-              onClick={() => { handleNav(link.href); setMobileOpen(false); }}
+        <div
+          style={{
+            background: 'rgba(13,15,20,0.97)',
+            borderBottom: '1px solid var(--border)',
+            padding: '12px 24px 20px',
+          }}
+        >
+          {navLinks.map((link) => (
+            <button
+              key={link.href}
+              onClick={() => {
+                handleNav(link.href);
+                setMobileOpen(false);
+              }}
               style={{
-                display: "block", width: "100%", textAlign: "left", background: "none",
-                border: "none", color: "var(--text-soft)", fontFamily: "var(--font-body)",
-                fontSize: "1rem", padding: "10px 0", cursor: "pointer",
+                display: 'block',
+                width: '100%',
+                textAlign: 'left',
+                background: 'none',
+                border: 'none',
+                color: 'var(--text-soft)',
+                fontFamily: 'var(--font-body)',
+                fontSize: '1rem',
+                padding: '10px 0',
+                cursor: 'pointer',
               }}
             >
               {link.label}
             </button>
           ))}
-          <button className="btn btn-primary" style={{ marginTop: 12, width: "100%" }}
-            onClick={() => { handleNav("#contact"); setMobileOpen(false); }}>
+          <button
+            className='btn btn-primary'
+            style={{ marginTop: 12, width: '100%' }}
+            onClick={() => {
+              handleNav('#contact');
+              setMobileOpen(false);
+            }}
+          >
             Contact
           </button>
         </div>
@@ -819,72 +1186,132 @@ const Navbar = () => {
 // ============================================================
 
 const Hero = () => (
-  <section id="hero" style={{
-    minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center",
-    position: "relative", overflow: "hidden",
-  }}>
+  <section
+    id='hero'
+    style={{
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      position: 'relative',
+      overflow: 'hidden',
+    }}
+  >
     {/* Subtle radial glow background — distinct from original particles */}
-    <div style={{
-      position: "absolute", inset: 0,
-      background: "radial-gradient(ellipse 70% 60% at 50% 40%, rgba(91,156,246,0.08) 0%, transparent 70%)",
-      pointerEvents: "none",
-    }} />
+    <div
+      style={{
+        position: 'absolute',
+        inset: 0,
+        background:
+          'radial-gradient(ellipse 70% 60% at 50% 40%, rgba(91,156,246,0.08) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }}
+    />
     {/* Grid texture overlay */}
-    <div style={{
-      position: "absolute", inset: 0, opacity: 0.03,
-      backgroundImage: "linear-gradient(var(--text) 1px, transparent 1px), linear-gradient(90deg, var(--text) 1px, transparent 1px)",
-      backgroundSize: "60px 60px",
-      pointerEvents: "none",
-    }} />
+    <div
+      style={{
+        position: 'absolute',
+        inset: 0,
+        opacity: 0.03,
+        backgroundImage:
+          'linear-gradient(var(--text) 1px, transparent 1px), linear-gradient(90deg, var(--text) 1px, transparent 1px)',
+        backgroundSize: '60px 60px',
+        pointerEvents: 'none',
+      }}
+    />
 
-    <div className="wrapper" style={{ textAlign: "center", position: "relative", zIndex: 1, paddingTop: 80, paddingBottom: 80 }}>
+    <div
+      className='wrapper'
+      style={{
+        textAlign: 'center',
+        position: 'relative',
+        zIndex: 1,
+        paddingTop: 80,
+        paddingBottom: 80,
+      }}
+    >
       {/* Logo */}
-      <div className="fade-up" style={{ marginBottom: 20 }}>
-        <img src={DATA.personal.logo} alt="Logo"
-          style={{ width: 52, height: 52, objectFit: "contain", display: "inline-block", borderRadius: 10 }} />
+      <div className='fade-up' style={{ marginBottom: 20 }}>
+        <img
+          src={DATA.personal.logo}
+          alt='Logo'
+          style={{
+            width: 52,
+            height: 52,
+            objectFit: 'contain',
+            display: 'inline-block',
+            borderRadius: 10,
+          }}
+        />
       </div>
 
       {/* Name */}
-      <h1 className="fade-up delay-1" style={{
-        fontFamily: "var(--font-display)", fontSize: "clamp(2.8rem, 8vw, 5rem)",
-        fontWeight: 400, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: 16,
-      }}>
-        {DATA.personal.firstName} <span style={{ color: "var(--accent)" }}>{DATA.personal.lastName}</span>
+      <h1
+        className='fade-up delay-1'
+        style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: 'clamp(2.8rem, 8vw, 5rem)',
+          fontWeight: 400,
+          letterSpacing: '-0.03em',
+          lineHeight: 1.1,
+          marginBottom: 16,
+        }}
+      >
+        {DATA.personal.firstName}{' '}
+        <span style={{ color: 'var(--accent)' }}>{DATA.personal.lastName}</span>
       </h1>
 
       {/* Divider */}
-      <div className="fade-up delay-2" style={{
-        width: 48, height: 2, background: "var(--accent)", margin: "0 auto 24px", borderRadius: 99,
-      }} />
+      <div
+        className='fade-up delay-2'
+        style={{
+          width: 48,
+          height: 2,
+          background: 'var(--accent)',
+          margin: '0 auto 24px',
+          borderRadius: 99,
+        }}
+      />
 
       {/* Social links */}
-      <div className="fade-up delay-2" style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}>
+      <div
+        className='fade-up delay-2'
+        style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}
+      >
         <SocialLinks />
       </div>
 
       {/* Tagline */}
-      <p className="fade-up delay-3" style={{
-        maxWidth: 500, margin: "0 auto 36px", color: "var(--text-soft)",
-        fontSize: "1rem", lineHeight: 1.7,
-      }}>
+      <p
+        className='fade-up delay-3'
+        style={{
+          maxWidth: 500,
+          margin: '0 auto 36px',
+          color: 'var(--text-soft)',
+          fontSize: '1rem',
+          lineHeight: 1.7,
+        }}
+      >
         {DATA.personal.tagline}
       </p>
 
       {/* CTA buttons */}
-      <div className="fade-up delay-4" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-        {DATA.heroButtons.map((btn, i) => <DataButton key={i} btn={btn} />)}
+      <div
+        className='fade-up delay-4'
+        style={{
+          display: 'flex',
+          gap: 12,
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+        }}
+      >
+        {DATA.heroButtons.map((btn, i) => (
+          <DataButton key={i} btn={btn} />
+        ))}
       </div>
     </div>
 
-    {/* Scroll hint */}
-    <div style={{
-      position: "absolute", bottom: 28, left: "50%", transform: "translateX(-50%)",
-      color: "var(--text-muted)", cursor: "pointer", animation: "bob 2s ease-in-out infinite",
-    }}
-      onClick={() => handleNav("#about")}
-    >
-      <Icon name="chevron" size={28} />
-    </div>
+    <ScrollHint target='#about' absolute={true} />
     <style>{`@keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }`}</style>
   </section>
 );
@@ -897,74 +1324,176 @@ const Timeline = () => {
   // Calculate total span for proportional widths
   const allEntries = DATA.timeline;
   const globalStart = allEntries[0].start;
-  const globalEnd = allEntries[allEntries.length - 1].end ?? new Date().getFullYear();
+  const globalEnd =
+    allEntries[allEntries.length - 1].end ?? new Date().getFullYear();
   const totalSpan = globalEnd - globalStart;
 
   return (
     <div style={{ marginTop: 48 }}>
       {/* Desktop horizontal timeline */}
-      <div className="timeline-desktop" style={{ position: "relative", height: 80, display: "flex", alignItems: "center" }}>
+      <div
+        className='timeline-desktop'
+        style={{
+          position: 'relative',
+          height: 80,
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
         {allEntries.map((entry, i) => {
           const segEnd = entry.end ?? globalEnd;
           const width = ((segEnd - entry.start) / totalSpan) * 100;
           return (
-            <div key={i} style={{ position: "relative", width: `${width}%`, flexShrink: 0 }}>
+            <div
+              key={i}
+              style={{
+                position: 'relative',
+                width: `${width}%`,
+                flexShrink: 0,
+              }}
+            >
               {/* Line */}
-              <div style={{ height: 1, background: "var(--border)", width: "100%" }} />
+              <div
+                style={{
+                  height: 1,
+                  background: 'var(--border)',
+                  width: '100%',
+                }}
+              />
               {/* Start dot */}
-              <div style={{
-                position: "absolute", left: 0, top: 0,
-                width: 12, height: 12, borderRadius: "50%",
-                background: "var(--bg-card)", border: "2px solid var(--accent)",
-                transform: "translate(-50%, -50%)",
-              }} />
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  top: 0,
+                  width: 12,
+                  height: 12,
+                  borderRadius: '50%',
+                  background: 'var(--bg-card)',
+                  border: '2px solid var(--accent)',
+                  transform: 'translate(-50%, -50%)',
+                }}
+              />
               {/* Year */}
-              <span style={{
-                position: "absolute", left: 0, top: -20,
-                transform: "translateX(-50%)", fontSize: 11,
-                color: "var(--text-muted)", whiteSpace: "nowrap",
-              }}>{entry.start}</span>
+              <span
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  top: -20,
+                  transform: 'translateX(-50%)',
+                  fontSize: 11,
+                  color: 'var(--text-muted)',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {entry.start}
+              </span>
               {/* Role above line */}
-              <span style={{
-                position: "absolute", left: "50%", top: -36,
-                transform: "translateX(-50%)", fontSize: 12,
-                color: "var(--text-soft)", textAlign: "center", whiteSpace: "nowrap",
-              }}>{entry.role}</span>
+              <span
+                style={{
+                  position: 'absolute',
+                  left: '50%',
+                  top: -36,
+                  transform: 'translateX(-50%)',
+                  fontSize: 12,
+                  color: 'var(--text-soft)',
+                  textAlign: 'center',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {entry.role}
+              </span>
               {/* Company below line */}
-              <span style={{
-                position: "absolute", left: "50%", top: 12,
-                transform: "translateX(-50%)", fontSize: 12,
-                color: "var(--text-muted)", textAlign: "center", whiteSpace: "nowrap",
-              }}>{entry.company}</span>
+              <span
+                style={{
+                  position: 'absolute',
+                  left: '50%',
+                  top: 12,
+                  transform: 'translateX(-50%)',
+                  fontSize: 12,
+                  color: 'var(--text-muted)',
+                  textAlign: 'center',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {entry.company}
+              </span>
             </div>
           );
         })}
         {/* End dot + "Now" */}
-        <div style={{
-          position: "absolute", right: 0, top: "50%",
-          width: 12, height: 12, borderRadius: "50%",
-          background: "var(--bg-card)", border: "2px solid rgba(91,156,246,0.3)",
-          transform: "translate(50%, -50%)",
-        }} />
-        <span style={{
-          position: "absolute", right: -4, top: "50%",
-          transform: "translateY(calc(-50% + 18px))", fontSize: 11,
-          color: "var(--text-muted)",
-        }}>Now</span>
+        <div
+          style={{
+            position: 'absolute',
+            right: 0,
+            top: '50%',
+            width: 12,
+            height: 12,
+            borderRadius: '50%',
+            background: 'var(--bg-card)',
+            border: '2px solid rgba(91,156,246,0.3)',
+            transform: 'translate(50%, -50%)',
+          }}
+        />
+        <span
+          style={{
+            position: 'absolute',
+            right: -4,
+            top: '50%',
+            transform: 'translateY(calc(-50% + 18px))',
+            fontSize: 11,
+            color: 'var(--text-muted)',
+          }}
+        >
+          Now
+        </span>
       </div>
 
       {/* Mobile vertical timeline */}
-      <div className="timeline-mobile" style={{ display: "none" }}>
+      <div className='timeline-mobile' style={{ display: 'none' }}>
         {allEntries.map((entry, i) => (
-          <div key={i} style={{ display: "flex", gap: 16, marginBottom: 24 }}>
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 0 }}>
-              <div style={{ width: 10, height: 10, borderRadius: "50%", background: "var(--accent)", marginTop: 5, flexShrink: 0 }} />
-              {i < allEntries.length - 1 && <div style={{ width: 1, flex: 1, background: "var(--border)", marginTop: 4 }} />}
+          <div key={i} style={{ display: 'flex', gap: 16, marginBottom: 24 }}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 0,
+              }}
+            >
+              <div
+                style={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: '50%',
+                  background: 'var(--accent)',
+                  marginTop: 5,
+                  flexShrink: 0,
+                }}
+              />
+              {i < allEntries.length - 1 && (
+                <div
+                  style={{
+                    width: 1,
+                    flex: 1,
+                    background: 'var(--border)',
+                    marginTop: 4,
+                  }}
+                />
+              )}
             </div>
             <div style={{ paddingBottom: 4 }}>
-              <span style={{ fontSize: 11, color: "var(--text-muted)" }}>{entry.start} – {entry.end ?? "Now"}</span>
-              <p style={{ fontWeight: 500, color: "var(--text)", marginTop: 2 }}>{entry.role || "—"}</p>
-              <p style={{ fontSize: 13, color: "var(--text-muted)" }}>{entry.company}</p>
+              <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>
+                {entry.start} – {entry.end ?? 'Now'}
+              </span>
+              <p
+                style={{ fontWeight: 500, color: 'var(--text)', marginTop: 2 }}
+              >
+                {entry.role || '—'}
+              </p>
+              <p style={{ fontSize: 13, color: 'var(--text-muted)' }}>
+                {entry.company}
+              </p>
             </div>
           </div>
         ))}
@@ -981,27 +1510,49 @@ const Timeline = () => {
 };
 
 const About = () => (
-  <section id="about" style={{ padding: "100px 0" }}>
-    <div className="wrapper">
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "48px", alignItems: "start" }}>
+  <section id='about' style={{ padding: '100px 0' }}>
+    <div className='wrapper'>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 2fr',
+          gap: '48px',
+          alignItems: 'start',
+        }}
+      >
         {/* Profile picture */}
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
           <img
             src={DATA.personal.profilePicture}
             alt={`${DATA.personal.firstName} ${DATA.personal.lastName}`}
             style={{
-              width: 180, height: 180, borderRadius: "50%", objectFit: "cover",
-              border: "3px solid var(--border)",
-              boxShadow: "0 0 40px var(--accent-glow)",
+              width: 180,
+              height: 180,
+              borderRadius: '50%',
+              objectFit: 'cover',
+              border: '3px solid var(--border)',
+              boxShadow: '0 0 40px var(--accent-glow)',
             }}
           />
         </div>
 
         {/* Bio */}
         <div>
-          <FormattedText text={DATA.personal.bio} style={{ color: "var(--text-soft)", fontSize: "0.97rem" }} />
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 28 }}>
-            {DATA.aboutButtons.map((btn, i) => <DataButton key={i} btn={btn} />)}
+          <FormattedText
+            text={DATA.personal.bio}
+            style={{ color: 'var(--text-soft)', fontSize: '0.97rem' }}
+          />
+          <div
+            style={{
+              display: 'flex',
+              gap: 10,
+              flexWrap: 'wrap',
+              marginTop: 28,
+            }}
+          >
+            {DATA.aboutButtons.map((btn, i) => (
+              <DataButton key={i} btn={btn} />
+            ))}
           </div>
         </div>
       </div>
@@ -1029,38 +1580,71 @@ const ServiceCard = ({ service }) => {
 
   return (
     <>
-      <div style={{
-        background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: 14,
-        padding: "32px 28px", display: "flex", flexDirection: "column", gap: 12,
-        transition: "border-color var(--transition), transform var(--transition)",
-        cursor: "default",
-      }}
-        onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(91,156,246,0.3)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-        onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.transform = "translateY(0)"; }}
+      <div
+        style={{
+          background: 'var(--bg-card)',
+          border: '1px solid var(--border)',
+          borderRadius: 14,
+          padding: '32px 28px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 12,
+          transition:
+            'border-color var(--transition), transform var(--transition)',
+          cursor: 'default',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = 'rgba(91,156,246,0.3)';
+          e.currentTarget.style.transform = 'translateY(-2px)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = 'var(--border)';
+          e.currentTarget.style.transform = 'translateY(0)';
+        }}
       >
-        <div style={{ color: "var(--accent)" }}>
+        <div style={{ color: 'var(--accent)' }}>
           <Icon name={service.icon} size={30} />
         </div>
-        <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "1.25rem" }}>
+        <h3
+          style={{
+            fontFamily: 'var(--font-display)',
+            fontWeight: 400,
+            fontSize: '1.25rem',
+          }}
+        >
           {service.name}
         </h3>
-        <p style={{ color: "var(--text-soft)", fontSize: "0.9rem", flex: 1 }}>
+        <p style={{ color: 'var(--text-soft)', fontSize: '0.9rem', flex: 1 }}>
           {service.descriptionShort}
         </p>
-        <button className="btn btn-outline" style={{ marginTop: 8, width: "100%" }} onClick={() => setOpen(true)}>
+        <button
+          className='btn btn-outline'
+          style={{ marginTop: 8, width: '100%' }}
+          onClick={() => setOpen(true)}
+        >
           Read more
         </button>
       </div>
 
       {open && (
         <Modal onClose={() => setOpen(false)}>
-          <div style={{ color: "var(--accent)", marginBottom: 12 }}>
+          <div style={{ color: 'var(--accent)', marginBottom: 12 }}>
             <Icon name={service.icon} size={26} />
           </div>
-          <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "1.6rem", marginBottom: 16 }}>
+          <h2
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontWeight: 400,
+              fontSize: '1.6rem',
+              marginBottom: 16,
+            }}
+          >
             {service.name}
           </h2>
-          <FormattedText text={service.descriptionLong} style={{ color: "var(--text-soft)", fontSize: "0.95rem" }} />
+          <FormattedText
+            text={service.descriptionLong}
+            style={{ color: 'var(--text-soft)', fontSize: '0.95rem' }}
+          />
         </Modal>
       )}
     </>
@@ -1068,12 +1652,22 @@ const ServiceCard = ({ service }) => {
 };
 
 const Services = () => (
-  <section id="services" style={{ padding: "100px 0", background: "var(--bg-card)" }}>
-    <div className="wrapper">
-      <h2 className="section-title">Services</h2>
-      <div style={{ display: "flex", gap: 24, flexWrap: "wrap", justifyContent: "center" }}>
+  <section
+    id='services'
+    style={{ padding: '100px 0', background: 'var(--bg-card)' }}
+  >
+    <div className='wrapper'>
+      <h2 className='section-title'>Services</h2>
+      <div
+        style={{
+          display: 'flex',
+          gap: 24,
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+        }}
+      >
         {DATA.services.map((service, i) => (
-          <div key={i} style={{ flex: "1 1 280px", maxWidth: 360 }}>
+          <div key={i} style={{ flex: '1 1 280px', maxWidth: 360 }}>
             <ServiceCard service={service} />
           </div>
         ))}
@@ -1088,21 +1682,55 @@ const Services = () => (
 
 const ProjectModal = ({ project, onClose }) => (
   <Modal onClose={onClose}>
-    <img src={project.img} alt={project.name}
-      style={{ width: "100%", height: 200, objectFit: "cover", borderRadius: 8, marginBottom: 20 }} />
-    <span style={{
-      fontSize: 11, fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase",
-      color: "var(--accent)", background: "var(--accent-dim)", padding: "3px 10px",
-      borderRadius: 99, marginBottom: 12, display: "inline-block",
-    }}>
+    <img
+      src={project.img}
+      alt={project.name}
+      style={{
+        width: '100%',
+        height: 200,
+        objectFit: 'cover',
+        borderRadius: 8,
+        marginBottom: 20,
+      }}
+    />
+    <span
+      style={{
+        fontSize: 11,
+        fontWeight: 500,
+        letterSpacing: '0.08em',
+        textTransform: 'uppercase',
+        color: 'var(--accent)',
+        background: 'var(--accent-dim)',
+        padding: '3px 10px',
+        borderRadius: 99,
+        marginBottom: 12,
+        display: 'inline-block',
+      }}
+    >
       {project.category}
     </span>
-    <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "1.5rem", margin: "8px 0 14px" }}>
+    <h2
+      style={{
+        fontFamily: 'var(--font-display)',
+        fontWeight: 400,
+        fontSize: '1.5rem',
+        margin: '8px 0 14px',
+      }}
+    >
       {project.name}
     </h2>
-    <FormattedText text={project.descriptionLong} style={{ color: "var(--text-soft)", fontSize: "0.92rem", marginBottom: 20 }} />
-    <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 8 }}>
-      {project.buttons.map((btn, i) => <DataButton key={i} btn={btn} />)}
+    <FormattedText
+      text={project.descriptionLong}
+      style={{
+        color: 'var(--text-soft)',
+        fontSize: '0.92rem',
+        marginBottom: 20,
+      }}
+    />
+    <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 8 }}>
+      {project.buttons.map((btn, i) => (
+        <DataButton key={i} btn={btn} />
+      ))}
     </div>
   </Modal>
 );
@@ -1115,62 +1743,115 @@ const ProjectCard = ({ project }) => {
       <div
         onClick={() => setOpen(true)}
         style={{
-          background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: 14,
-          overflow: "hidden", cursor: "pointer",
-          transition: "border-color var(--transition), transform var(--transition)",
+          background: 'var(--bg-card)',
+          border: '1px solid var(--border)',
+          borderRadius: 14,
+          overflow: 'hidden',
+          cursor: 'pointer',
+          transition:
+            'border-color var(--transition), transform var(--transition)',
         }}
-        onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(91,156,246,0.3)"; e.currentTarget.style.transform = "translateY(-3px)"; }}
-        onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.transform = "translateY(0)"; }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = 'rgba(91,156,246,0.3)';
+          e.currentTarget.style.transform = 'translateY(-3px)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = 'var(--border)';
+          e.currentTarget.style.transform = 'translateY(0)';
+        }}
       >
         {/* Image */}
-        <div style={{ height: 200, overflow: "hidden" }}>
-          <img src={project.img} alt={project.name}
-            style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.4s ease" }}
-            onMouseEnter={e => e.target.style.transform = "scale(1.04)"}
-            onMouseLeave={e => e.target.style.transform = "scale(1)"}
+        <div style={{ height: 200, overflow: 'hidden' }}>
+          <img
+            src={project.img}
+            alt={project.name}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              transition: 'transform 0.4s ease',
+            }}
+            onMouseEnter={(e) => (e.target.style.transform = 'scale(1.04)')}
+            onMouseLeave={(e) => (e.target.style.transform = 'scale(1)')}
           />
         </div>
         {/* Card body */}
-        <div style={{ padding: "18px 20px 22px" }}>
-          <span style={{
-            fontSize: 11, fontWeight: 500, letterSpacing: "0.07em", textTransform: "uppercase",
-            color: "var(--accent)", background: "var(--accent-dim)", padding: "2px 9px",
-            borderRadius: 99, marginBottom: 8, display: "inline-block",
-          }}>
+        <div style={{ padding: '18px 20px 22px' }}>
+          <span
+            style={{
+              fontSize: 11,
+              fontWeight: 500,
+              letterSpacing: '0.07em',
+              textTransform: 'uppercase',
+              color: 'var(--accent)',
+              background: 'var(--accent-dim)',
+              padding: '2px 9px',
+              borderRadius: 99,
+              marginBottom: 8,
+              display: 'inline-block',
+            }}
+          >
             {project.category}
           </span>
-          <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "1.1rem", margin: "6px 0 8px" }}>
+          <h3
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontWeight: 400,
+              fontSize: '1.1rem',
+              margin: '6px 0 8px',
+            }}
+          >
             {project.name}
           </h3>
-          <p style={{ fontSize: "0.85rem", color: "var(--text-muted)", lineHeight: 1.55 }}>
+          <p
+            style={{
+              fontSize: '0.9rem',
+              color: 'var(--text-soft)',
+              fontWeight: 400,
+              lineHeight: 1.6,
+            }}
+          >
             {project.descriptionShort}
           </p>
         </div>
       </div>
 
-      {open && <ProjectModal project={project} onClose={() => setOpen(false)} />}
+      {open && (
+        <ProjectModal project={project} onClose={() => setOpen(false)} />
+      )}
     </>
   );
 };
 
 const Portfolio = () => {
-  const categories = ["All", ...new Set(DATA.projects.map(p => p.category))];
-  const [activeFilter, setActiveFilter] = useState("All");
-  const filtered = activeFilter === "All" ? DATA.projects : DATA.projects.filter(p => p.category === activeFilter);
+  const categories = ['All', ...new Set(DATA.projects.map((p) => p.category))];
+  const [activeFilter, setActiveFilter] = useState('All');
+  const filtered =
+    activeFilter === 'All'
+      ? DATA.projects
+      : DATA.projects.filter((p) => p.category === activeFilter);
 
   return (
-    <section id="portfolio" style={{ padding: "100px 0" }}>
-      <div className="wrapper">
-        <h2 className="section-title">Portfolio</h2>
+    <section id='portfolio' style={{ padding: '100px 0' }}>
+      <div className='wrapper'>
+        <h2 className='section-title'>Portfolio</h2>
 
         {/* Filter buttons */}
-        <div style={{ display: "flex", justifyContent: "center", gap: 8, flexWrap: "wrap", marginBottom: 40 }}>
-          {categories.map(cat => (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: 8,
+            flexWrap: 'wrap',
+            marginBottom: 40,
+          }}
+        >
+          {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveFilter(cat)}
-              className={`btn ${activeFilter === cat ? "btn-primary" : "btn-outline"}`}
-              style={{ padding: "6px 16px", fontSize: "0.8rem" }}
+              className={`btn ${activeFilter === cat ? 'btn-primary' : 'btn-outline'}`}
+              style={{ padding: '6px 16px', fontSize: '0.8rem' }}
             >
               {cat}
             </button>
@@ -1178,11 +1859,13 @@ const Portfolio = () => {
         </div>
 
         {/* Project grid */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-          gap: 24,
-        }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+            gap: 24,
+          }}
+        >
           {filtered.map((project, i) => (
             <ProjectCard key={i} project={project} />
           ))}
@@ -1198,64 +1881,76 @@ const Portfolio = () => {
 
 /** Color map for skill group categories */
 const GROUP_COLORS = {
-  "Programming":        { bg: "rgba(91,156,246,0.12)",  text: "#5b9cf6" },
-  "Data Engineering":   { bg: "rgba(248,184,62,0.12)",  text: "#f8b83e" },
-  "Data Visualization": { bg: "rgba(244,114,182,0.12)", text: "#f472b6" },
-  "Tools":              { bg: "rgba(52,211,153,0.12)",  text: "#34d399" },
+  'Programming & Scripting': { bg: 'rgba(91,156,246,0.12)', text: '#5b9cf6' },
+  'Frameworks & Engines': { bg: 'rgba(244,114,182,0.12)', text: '#f472b6' },
+  'Data Engineering & Databases': {
+    bg: 'rgba(248,184,62,0.12)',
+    text: '#ed8936',
+  },
+  'Data Science & Machine Learning': {
+    bg: 'rgba(52,211,153,0.12)',
+    text: '#34d399',
+  },
+  'Tools & Environments': { bg: 'rgba(167,139,250,0.12)', text: '#a78bfa' },
 };
-const DEFAULT_COLOR = { bg: "rgba(156,163,175,0.12)", text: "#9ca3af" };
+const DEFAULT_COLOR = { bg: 'rgba(156,163,175,0.12)', text: '#9ca3af' };
 
 const Skills = () => {
-  const groups = [...new Set(DATA.skills.map(s => s.group))];
+  const groups = [...new Set(DATA.skills.map((s) => s.group))];
 
   return (
-    <section id="skills" style={{ padding: "100px 0", background: "var(--bg-card)" }}>
-      <div className="wrapper">
-        <h2 className="section-title">Skills</h2>
-        <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
-          {groups.map(group => {
-            const groupSkills = DATA.skills.filter(s => s.group === group);
+    <section
+      id='skills'
+      style={{ padding: '100px 0', background: 'var(--bg-card)' }}
+    >
+      <div className='wrapper'>
+        <h2 className='section-title'>Skills</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+          {groups.map((group) => {
+            const groupSkills = DATA.skills.filter((s) => s.group === group);
             const color = GROUP_COLORS[group] ?? DEFAULT_COLOR;
             return (
               <div key={group}>
                 {/* Group label */}
-                <p style={{
-                  fontSize: 11, fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase",
-                  color: "var(--text-muted)", marginBottom: 14,
-                }}>
+                <p
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 500,
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    color: 'var(--text-muted)',
+                    marginBottom: 14,
+                  }}
+                >
                   {group}
                 </p>
                 {/* Skill tags */}
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
                   {groupSkills.map((skill, i) => (
-                    <div key={i} style={{
-                      background: color.bg,
-                      color: color.text,
-                      border: `1px solid ${color.text}30`,
-                      borderRadius: 99,
-                      padding: "6px 16px",
-                      fontSize: "0.88rem",
-                      fontWeight: 400,
-                      /* Slightly larger for high-value skills */
-                      opacity: skill.value >= 80 ? 1 : 0.7,
-                      transition: "opacity var(--transition), transform var(--transition)",
-                      cursor: "default",
-                    }}
-                      onMouseEnter={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "scale(1.04)"; }}
-                      onMouseLeave={e => { e.currentTarget.style.opacity = skill.value >= 80 ? "1" : "0.7"; e.currentTarget.style.transform = "scale(1)"; }}
+                    <div
+                      key={i}
+                      style={{
+                        background: color.bg,
+                        color: color.text,
+                        border: `1px solid ${color.text}30`,
+                        borderRadius: 99,
+                        padding: '6px 16px',
+                        fontSize: '0.88rem',
+                        fontWeight: 400,
+                        transition:
+                          'opacity var(--transition), transform var(--transition)',
+                        cursor: 'default',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.opacity = '1';
+                        e.currentTarget.style.transform = 'scale(1.04)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.opacity = '1';
+                        e.currentTarget.style.transform = 'scale(1)';
+                      }}
                     >
                       {skill.name}
-                      {/* Proficiency bar */}
-                      <span style={{
-                        display: "inline-block", marginLeft: 8, width: 28, height: 3,
-                        borderRadius: 99, background: `${color.text}30`, verticalAlign: "middle",
-                        position: "relative", overflow: "hidden",
-                      }}>
-                        <span style={{
-                          position: "absolute", left: 0, top: 0, bottom: 0,
-                          width: `${skill.value}%`, background: color.text, borderRadius: 99,
-                        }} />
-                      </span>
                     </div>
                   ))}
                 </div>
@@ -1273,18 +1968,40 @@ const Skills = () => {
 // ============================================================
 
 const Contact = () => (
-  <section id="contact" style={{ padding: "100px 0" }}>
-    <div className="wrapper" style={{ textAlign: "center" }}>
-      <h2 className="section-title">Contact</h2>
-      <p style={{ color: "var(--text-soft)", maxWidth: 420, margin: "0 auto 36px", lineHeight: 1.7 }}>
-        {DATA.contact.text.split("\n\n").map((line, i) => (
-          <span key={i} style={{ display: "block", marginBottom: i < DATA.contact.text.split("\n\n").length - 1 ? "0.8em" : 0 }}>
+  <section id='contact' style={{ padding: '100px 0' }}>
+    <div className='wrapper' style={{ textAlign: 'center' }}>
+      <h2 className='section-title'>Contact</h2>
+      <p
+        style={{
+          color: 'var(--text-soft)',
+          margin: '0 auto 36px',
+          lineHeight: 1.7,
+        }}
+      >
+        {DATA.contact.text.split('\n\n').map((line, i) => (
+          <span
+            key={i}
+            style={{
+              display: 'block',
+              marginBottom:
+                i < DATA.contact.text.split('\n\n').length - 1 ? '0.8em' : 0,
+            }}
+          >
             {line}
           </span>
         ))}
       </p>
-      <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-        {DATA.contact.buttons.map((btn, i) => <DataButton key={i} btn={btn} />)}
+      <div
+        style={{
+          display: 'flex',
+          gap: 12,
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+        }}
+      >
+        {DATA.contact.buttons.map((btn, i) => (
+          <DataButton key={i} btn={btn} />
+        ))}
       </div>
     </div>
   </section>
@@ -1295,16 +2012,26 @@ const Contact = () => (
 // ============================================================
 
 const Footer = () => (
-  <footer style={{
-    background: "var(--bg-card)", borderTop: "1px solid var(--border)",
-    padding: "28px 0",
-  }}>
-    <div className="wrapper" style={{
-      display: "flex", justifyContent: "space-between", alignItems: "center",
-      flexWrap: "wrap", gap: 16,
-    }}>
-      <p style={{ fontSize: "0.85rem", color: "var(--text-muted)" }}>
-        © {DATA.personal.firstName} {DATA.personal.lastName} {new Date().getFullYear()}
+  <footer
+    style={{
+      background: 'var(--bg-card)',
+      borderTop: '1px solid var(--border)',
+      padding: '28px 0',
+    }}
+  >
+    <div
+      className='wrapper'
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: 16,
+      }}
+    >
+      <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+        © {DATA.personal.firstName} {DATA.personal.lastName}{' '}
+        {new Date().getFullYear()}
       </p>
       <SocialLinks />
     </div>
