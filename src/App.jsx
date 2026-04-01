@@ -64,7 +64,7 @@ const DATA = {
      */
     bio: `👋 Hi, I'm Jimmy.
 
-I'm a software engineer who made the leap into coding in 2024 and has been learning while building apps ever since.
+I'm a software engineer who jumped into coding in 2024 and has been learning by building apps ever since.
 
 As LLMs weren't as advanced when I started learning to code, I was fortunate enough to experience building applications on my own before learning to accelerate the development process with responsible use of LLMs.
 
